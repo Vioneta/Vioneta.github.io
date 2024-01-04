@@ -993,8 +993,8 @@ ul.nostyle i {
 @media only screen and (max-width: 480px) {
   #hero-banner h2 {
     margin-top: 280px;
-    font-size: 40px;
-    /* line-height: 40px; */
+    font-size: 30px;
+    /* line-height: 35px; */
     /* background: rgba(255, 255, 255, 0.68); */
     padding: 10px;
   }
