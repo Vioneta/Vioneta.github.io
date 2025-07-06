@@ -1,861 +1,712 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="" />
-    <meta name="author" content="webthemez" />
-    <title>Vioneta</title>
-    <!-- core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet" />
-    <link href="css/font-awesome.min.css" rel="stylesheet" />
-    <link href="css/animate.min.css" rel="stylesheet" />
-    <link href="css/prettyphoto.css" rel="stylesheet" />
-    <link href="css/styles.css" rel="stylesheet" />
-    <!--[if lt IE 9]>
-      <script src="js/html5shiv.js"></script>
-      <script src="js/respond.min.js"></script>
-    <![endif]-->
-    <link rel="shortcut icon" href="images/ico/favicon.ico" />
+    <title>Vioneta - Harvesting Tomorrow's Agriculture</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <!-- Google Fonts - Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+        overflow-x: hidden; /* Prevent horizontal scroll from animations */
+      }
+      .gradient-bg {
+        background: linear-gradient(135deg, #a8e063, #56ab2f);
+      }
+      .text-gradient {
+        background: linear-gradient(45deg, #a8e063, #56ab2f);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      /* Initial hidden state for elements that will be animated */
+      .animate-fade-in-up {
+        opacity: 0;
+        transform: translateY(20px);
+        visibility: hidden; /* Hide before animation starts */
+      }
+      .animate-scale-in {
+        opacity: 0;
+        transform: scale(0.9);
+        visibility: hidden; /* Hide before animation starts */
+      }
+      .card-hover-effect {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .card-hover-effect:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      }
+      /* Mobile menu transition */
+      #mobile-menu {
+        transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+      }
+      #mobile-menu.open {
+        max-height: 500px; /* Adjust based on content height */
+        opacity: 1;
+      }
+      /* Performance optimization for animated elements */
+      .animate-element {
+        will-change: transform, opacity;
+      }
+    </style>
+<style>
+    /* Hero Background Carousel Styles */
+    .hero-background-carousel {
+      position: absolute;
+      inset: 0;
+      z-index: 0; /* Ensure it's behind content */
+      overflow: hidden; /* Hide overflow from images */
+    }
+    .hero-background-carousel-item {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 1.5s ease-in-out; /* Smooth fade transition */
+      will-change: opacity;
+    }
+    .hero-background-carousel-item.active {
+      opacity: 1;
+    }
+    .hero-background-carousel-item::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.2); /* Dark overlay for better text readability */
+      filter: blur(3px); /* Apply blur effect */
+      z-index: 1; /* Ensure overlay is above image but below text */
+    }
+</style>
   </head>
-
-  <body id="home">
-    <header id="header">
-      <nav
-        id="main-nav"
-        class="navbar navbar-default navbar-fixed-top"
-        role="banner"
-      >
-        <div class="container">
-          <div class="navbar-header">
-            <button
-              type="button"
-              class="navbar-toggle"
-              data-toggle="collapse"
-              data-target=".navbar-collapse"
-            >
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="index.html"
-              ><img src="images/logo.png" alt="logo"
-            /></a>
-          </div>
-
-          <div class="collapse navbar-collapse navbar-right">
-            <ul class="nav navbar-nav">
-              <li class="scroll active"><a href="#home">Home</a></li>
-              <li class="scroll"><a href="#products">Products</a></li>
-              <li class="scroll"><a href="#services">Services</a></li>
-              <li class="scroll"><a href="#about">About</a></li>
-              <li class="scroll"><a href="#team">Team</a></li>
-              <li class="scroll"><a href="#contact-us">Contact</a></li>
-            </ul>
-          </div>
+  <body class="bg-gray-50 text-gray-800">
+    <!-- Navbar -->
+    <header class="bg-white shadow-md fixed w-full z-50 border-b border-gray-100">
+      <nav class="container mx-auto px-6 py-5 flex justify-between items-center">
+        <a href="#" class="text-2xl font-bold text-green-700">Vioneta</a>
+        <div class="hidden lg:flex space-x-8 items-center">
+          <a href="#home" class="text-gray-600 hover:text-green-700 font-medium transition duration-300 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded-md px-2 py-1">Home</a>
+          <a href="#solution" class="text-gray-600 hover:text-green-700 font-medium transition duration-300 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded-md px-2 py-1">Solution</a>
+          <a href="#products" class="text-gray-600 hover:text-green-700 font-medium transition duration-300 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded-md px-2 py-1">Products</a>
+          <a href="#services" class="text-gray-600 hover:text-green-700 font-medium transition duration-300 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded-md px-2 py-1">Services</a>
+          <a href="#about" class="text-gray-600 hover:text-green-700 font-medium transition duration-300 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded-md px-2 py-1">About</a>
+          <a href="#our-vision" class="text-gray-600 hover:text-green-700 font-medium transition duration-300 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded-md px-2 py-1">Our Vision</a>
+          <a href="#team" class="text-gray-600 hover:text-green-700 font-medium transition duration-300 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded-md px-2 py-1">Team</a>
+          <a href="#contact" class="text-gray-600 hover:text-green-700 font-medium transition duration-300 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded-md px-2 py-1">Contact</a>
         </div>
-        <!--/.container-->
+        <div class="lg:hidden">
+          <button id="mobile-menu-button" class="text-gray-600 focus:outline-none focus:text-green-700 p-2 rounded-md hover:bg-gray-100 transition duration-300">
+            <i class="fas fa-bars text-xl"></i>
+          </button>
+        </div>
       </nav>
-      <!--/nav-->
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="lg:hidden bg-white py-0">
+        <a href="#home" class="block px-6 py-3 text-gray-600 hover:text-green-700 font-medium transition duration-300 text-center">Home</a>
+        <a href="#solution" class="block px-6 py-3 text-gray-600 hover:text-green-700 font-medium transition duration-300 text-center">Solution</a>
+        <a href="#products" class="block px-6 py-3 text-gray-600 hover:text-green-700 font-medium transition duration-300 text-center">Products</a>
+        <a href="#services" class="block px-6 py-3 text-gray-600 hover:text-green-700 font-medium transition duration-300 text-center">Services</a>
+        <a href="#about" class="block px-6 py-3 text-gray-600 hover:text-green-700 font-medium transition duration-300 text-center">About</a>
+        <a href="#our-vision" class="block px-6 py-3 text-gray-600 hover:text-green-700 font-medium transition duration-300 text-center">Our Vision</a>
+        <a href="#team" class="block px-6 py-3 text-gray-600 hover:text-green-700 font-medium transition duration-300 text-center">Team</a>
+        <a href="#contact" class="block px-6 py-3 text-gray-600 hover:text-green-700 font-medium transition duration-300 text-center">Contact</a>
+      </div>
     </header>
-    <!--/header-->
 
-    <section id="hero-banner">
-      <div class="banner-inner">
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-6">
-              <h2>Harvesting Tomorrow's Agriculture</h2>
-              <p>Cutting-Edge Solutions for Sustainable Farming.</p>
-              <li class="scroll">
-                <a class="btn btn-primary btn-lg" href="#products"
-                  >Learn More</a
-                >
-              </li>
+    <main>
+      <!-- Hero Section -->
+<section id="home" class="relative bg-gradient-to-r from-green-500 to-green-700 text-white flex items-center justify-center min-h-screen py-20 overflow-hidden">
+  <!-- Background Image Carousel -->
+  <div class="hero-background-carousel">
+    <!-- Replace these placeholder URLs with your actual high-quality background images -->
+    <div class="hero-background-carousel-item active" style="background-image: url('./images/slider/01.jpg');"></div>
+    <div class="hero-background-carousel-item" style="background-image: url('./images/slider/02.jpg');"></div>
+    <div class="hero-background-carousel-item" style="background-image: url('./images/slider/03.jpg');"></div>
+    <div class="hero-background-carousel-item" style="background-image: url('./images/slider/04.jpg');"></div>
+  </div>
+
+  <!-- Text content and existing animations -->
+  <div class="absolute inset-0 z-0 opacity-20">
+    <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <radialGradient id="grad1" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+          <stop offset="0%" stop-color="rgba(255,255,255,0.1)"></stop>
+          <stop offset="100%" stop-color="rgba(255,255,255,0)"></stop>
+        </radialGradient>
+      </defs>
+      <circle cx="20" cy="20" r="15" fill="url(#grad1)" class="animate-pulse-slow"></circle>
+      <circle cx="80" cy="70" r="20" fill="url(#grad1)" class="animate-pulse-medium"></circle>
+      <circle cx="50" cy="90" r="10" fill="url(#grad1)" class="animate-pulse-fast"></circle>
+      <circle cx="10" cy="60" r="12" fill="url(#grad1)" class="animate-pulse-slow"></circle>
+    </svg>
+  </div>
+
+  <div class="container mx-auto px-6 text-center z-10">
+    <h1 id="hero-title" class="text-5xl md:text-7xl font-extrabold leading-tight mb-6 animate-element">
+      Harvesting Tomorrow's Agriculture
+    </h1>
+    <p id="hero-subtitle" class="text-xl md:text-2xl mb-10 animate-element">
+      Cutting-Edge Solutions for Sustainable Farming.
+    </p>
+    <a id="hero-button" href="#products" class="inline-block bg-white text-green-700 hover:bg-gray-100 px-8 py-4 rounded-full text-lg font-semibold shadow-lg transform hover:scale-105 transition duration-300 animate-element">
+      Learn More
+    </a>
+  </div>
+</section>
+
+      <!-- Solution Section -->
+      <section id="solution" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+          <h2 class="text-4xl font-bold text-center mb-12 text-gradient animate-fade-in-up animate-element">Our Solution</h2>
+          <div class="flex flex-col lg:flex-row items-center gap-12">
+            <div class="lg:w-1/2 animate-fade-in-up animate-element" data-delay="0.2">
+              <img src="./images/vioneta-platform.png" alt="Vioneta Platform" class="rounded-lg shadow-xl" />
+            </div>
+            <div class="lg:w-1/2 space-y-6 animate-fade-in-up animate-element" data-delay="0.4">
+              <p class="text-lg text-gray-700">
+                Vioneta Agro Platform delivers a comprehensive, scalable, and intelligent infrastructure for modern agriculture.
+              </p>
+              <ul class="list-disc list-inside text-gray-700 space-y-3">
+                <li><strong class="text-green-600">Proprietary Edge Computing:</strong> Enables local, offline data processing, providing farmers with real-time insights regardless of connectivity.</li>
+                <li><strong class="text-green-600">Centralized Data Hub:</strong> Collects, processes, and translates complex machine and sensor data into clear, actionable information for critical decision-making.</li>
+                <li><strong class="text-green-600">Seamless Integration:</strong> Integrates sensors, cameras, agriculture machinery, AI-enabled decision support systems with chatbots, machine learning algorithms, data analytics, and automation to optimize irrigation, fertilization, and crop monitoring.</li>
+                <li><strong class="text-green-600">Vioneta Academy:</strong> Complemented by our academy, we provide structured training and support to ensure successful adoption and maximize the impact of our technology on farm productivity and sustainability.</li>
+              </ul>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-    <!--/#main-slider-->
-    <section class="download-now" id="products">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title wow fadeInDown">Our Products</h2>
-          <p class="wow fadeInDown">
-            At Vioneta Agro, quality stands as the cornerstone of our product philosophy. We engineer each component of our agricultural solutions with an unwavering commitment to excellence, ensuring robustness, reliability, and resilience in every facet of our technology.
-            Our products are meticulously crafted to thrive in the demanding conditions of agricultural settings. Built to endure harsh climates, rugged terrains, and variable environmental factors, they boast exceptional durability and resilience, guaranteeing uninterrupted performance even in the most challenging scenarios.
+      </section>
+
+      <!-- Products Section -->
+      <section id="products" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-6">
+          <h2 class="text-4xl font-bold text-center mb-12 text-gradient animate-fade-in-up animate-element">Our Products</h2>
+          <p class="text-center text-lg mb-12 max-w-3xl mx-auto text-gray-700 animate-fade-in-up animate-element" data-delay="0.2">
+            At Vioneta Agro, quality stands as the cornerstone of our product philosophy. We engineer each component of our agricultural solutions with an unwavering commitment to excellence, ensuring robustness, reliability, and resilience in every facet of our technology. Our products are meticulously crafted to thrive in the demanding conditions of agricultural settings, guaranteeing uninterrupted performance even in the most challenging scenarios.
           </p>
-        </div>
 
-        <div class="row">
-          <div class="col-md-12">
-            <div class="row">
-              <div class="features">
-                <div
-                  class="col-md-4 wow fadeInUp"
-                  data-wow-duration="300ms"
-                  data-wow-delay="0ms"
-                >
-                  <div>
-                    <i class="fa fa-linux"></i>
-                  </div>
-                  <div class="media service-box">
-                    <div class="media-body">
-                      <h4 class="media-heading">Vioneta Agro OS</h4>
-                      <p>
-                        A specialized operating system managing the Vioneta Agro Edge Platform's low-level services, local storage, updates, Docker container management, network configurations, and local hardware components like Bluetooth, Wi-Fi, and LoRa connectivity.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <!--/.col-md-4-->
-
-                <div
-                  class="col-md-4 wow fadeInUp"
-                  data-wow-duration="300ms"
-                  data-wow-delay="100ms"
-                >
-                  <div>
-                    <i class="fa fa-cogs"></i>
-                  </div>
-                  <div class="media service-box">
-                    <div class="media-body">
-                      <h4 class="media-heading">
-                        Vioneta Agro Automation Controller
-                      </h4>
-                      <p>
-                        An executor of predefined automation tasks configured by the Vioneta Agro Edge Computer. It executes specific agricultural automation sequences and tasks orchestrated by the Edge Computer, contributing to enhanced operational efficiency.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <!--/.col-md-4-->
-
-                <div
-                  class="col-md-4 wow fadeInUp"
-                  data-wow-duration="300ms"
-                  data-wow-delay="200ms"
-                >
-                  <div>
-                    <i class="fa fa-desktop"></i>
-                  </div>
-                  <div class="media service-box">
-                    <div class="media-body">
-                      <h4 class="media-heading">Vioneta Agro Edge Computer</h4>
-                      <p>
-                        Equipped with Vioneta Agro OS, the Edge Computer serves as the central hub, managing multiple Automation Controllers. It orchestrates automation processes, coordinates tasks, and communicates with interconnected devices and sensors across the agricultural infrastructure.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                <!--/.col-md-4-->
-
-                <div
-                  class="col-md-4 wow fadeInUp"
-                  data-wow-duration="300ms"
-                  data-wow-delay="200ms"
-                >
-                  <div>
-                    <i class="fa fa-signal"></i>
-                  </div>
-                  <div class="media service-box">
-                    <div class="media-body">
-                      <h4 class="media-heading">Vioneta Agro Lora Gateway</h4>
-                      <p>
-                        Acts as a central hub, enabling LoRa-based communication between the Edge Computer and interconnected hardware components, sensors, and Automation Controllers.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                <!--/.col-md-4-->
-
-                <div
-                  class="col-md-4 fadeInUp"
-                  data-wow-duration="300ms"
-                  data-wow-delay="300ms"
-                >
-                  <div>
-                    <i class="fa fa-cloud"></i>
-                  </div>
-                  <div class="media service-box">
-                    <div class="media-body">
-                      <h4 class="media-heading">Vioneta Agro Cloud</h4>
-                      <p>
-                        A cloud-based service allowing secure remote access to the Edge Computer from anywhere, providing monitoring, data analysis, configuration, and control functionalities.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <!--/.col-md-4-->
-                <!--/.col-md-4-->
-
-                <div
-                  class="col-md-4 fadeInUp"
-                  data-wow-duration="300ms"
-                  data-wow-delay="300ms"
-                >
-                  <div>
-                    <i class="fa fa-archive"></i>
-                  </div>
-                  <div class="media service-box">
-                    <div class="media-body">
-                      <h4 class="media-heading">Vioneta Agro App Store </h4>
-                      <p>
-                        The Vioneta Agro App Store stands as a comprehensive repository comprising dockerized applications. It serves as an invaluable resource to enhance and extend the capabilities of the Vioneta Agro ecosystem.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <!--/.col-md-4-->
-                <!--/.col-md-4-->
-
-                <div
-                  class="col-md-4 fadeInUp"
-                  data-wow-duration="300ms"
-                  data-wow-delay="300ms"
-                >
-                  <div>
-                    <i class="fa fa-android"></i>
-                  </div>
-                  <div class="media service-box">
-                    <div class="media-body">
-                      <h4 class="media-heading">Vioneta Agro Mobile App</h4>
-                      <p>
-                        An application enabling users to access and manage the Edge Computer locally or remotely. It offers a user-friendly interface for monitoring, control, and data analysis.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+            <div class="bg-white p-8 rounded-lg shadow-lg card-hover-effect animate-fade-in-up animate-element" data-delay="0.4">
+              <div class="text-green-500 text-5xl mb-4"><i class="fas fa-cogs"></i></div>
+              <h3 class="text-2xl font-semibold mb-4">Vioneta Agro Automation Controller</h3>
+              <p class="text-gray-600">An executor of predefined automation tasks configured by the Vioneta Agro Edge Computer. It executes specific agricultural automation sequences and tasks orchestrated by the Edge Computer, contributing to enhanced operational efficiency.</p>
             </div>
-            <!--/.row-->
+            <div class="bg-white p-8 rounded-lg shadow-lg card-hover-effect animate-fade-in-up animate-element" data-delay="0.5">
+              <div class="text-green-500 text-5xl mb-4"><i class="fas fa-desktop"></i></div>
+              <h3 class="text-2xl font-semibold mb-4">Vioneta Agro Edge Computer</h3>
+              <p class="text-600">Equipped with Vioneta Agro OS, the Edge Computer serves as the central hub, managing multiple Automation Controllers. It orchestrates automation processes, coordinates tasks, and communicates with interconnected devices and sensors across the agricultural infrastructure.</p>
+            </div>
+            <div class="bg-white p-8 rounded-lg shadow-lg card-hover-effect animate-fade-in-up animate-element" data-delay="0.6">
+              <div class="text-green-500 text-5xl mb-4"><i class="fas fa-signal"></i></div>
+              <h3 class="text-2xl font-semibold mb-4">Vioneta Agro LoRa Gateway</h3>
+              <p class="text-gray-600">Acts as a central hub, enabling LoRa-based communication between the Edge Computer and interconnected hardware components, sensors, and Automation Controllers.</p>
+            </div>
+            <div class="bg-white p-8 rounded-lg shadow-lg card-hover-effect animate-fade-in-up animate-element" data-delay="0.7">
+              <div class="text-green-500 text-5xl mb-4"><i class="fas fa-cloud"></i></div>
+              <h3 class="text-2xl font-semibold mb-4">Vioneta Agro Cloud</h3>
+              <p class="text-gray-600">A cloud-based service allowing secure remote access to the Edge Computer from anywhere, providing monitoring, data analysis, configuration, and control functionalities.</p>
+            </div>
+            <div class="bg-white p-8 rounded-lg shadow-lg card-hover-effect animate-fade-in-up animate-element" data-delay="0.8">
+              <div class="text-green-500 text-5xl mb-4"><i class="fas fa-store"></i></div>
+              <h3 class="text-2xl font-semibold mb-4">Vioneta Agro App Store</h3>
+              <p class="text-gray-600">The Vioneta Agro App Store stands as a comprehensive repository comprising dockerized applications. It serves as an invaluable resource to enhance and extend the capabilities of the Vioneta Agro ecosystem.</p>
+            </div>
+            <div class="bg-white p-8 rounded-lg shadow-lg card-hover-effect animate-fade-in-up animate-element" data-delay="0.9">
+              <div class="text-green-500 text-5xl mb-4"><i class="fab fa-android"></i></div>
+              <h3 class="text-2xl font-semibold mb-4">Vioneta Agro Mobile App</h3>
+              <p class="text-gray-600">An application enabling users to access and manage the Edge Computer locally or remotely. It offers a user-friendly interface for monitoring, control, and data analysis.</p>
+            </div>
+            <div class="bg-white p-8 rounded-lg shadow-lg card-hover-effect animate-fade-in-up animate-element" data-delay="1.0">
+              <div class="text-green-500 text-5xl mb-4"><i class="fas fa-brain"></i></div>
+              <h3 class="text-2xl font-semibold mb-4">Vinsight</h3>
+              <p class="text-gray-600">Advanced Machine Learning, Data analytics and reporting engine for predictive insights and trend reports.</p>
+            </div>
+            <div class="bg-white p-8 rounded-lg shadow-lg card-hover-effect animate-fade-in-up animate-element" data-delay="1.1">
+              <div class="text-green-500 text-5xl mb-4"><i class="fas fa-video"></i></div>
+              <h3 class="text-2xl font-semibold mb-4">Vcam</h3>
+              <p class="text-gray-600">AI-driven video analysis system to detect specific events like animal intrusions.</p>
+            </div>
+            <div class="bg-white p-8 rounded-lg shadow-lg card-hover-effect animate-fade-in-up animate-element" data-delay="1.3">
+              <div class="text-green-500 text-5xl mb-4"><i class="fas fa-robot"></i></div>
+              <h3 class="text-2xl font-semibold mb-4">Vassist</h3>
+              <p class="text-gray-600">AI Driven Interactive assistant for decision support, allowing voice commands or text inputs to control devices and trigger automations.</p>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section id="services">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title wow fadeInDown">Our Services</h2>
-          <p class="wow fadeInDown">
+      <!-- Services Section -->
+      <section id="services" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+          <h2 class="text-4xl font-bold text-center mb-12 text-gradient animate-fade-in-up animate-element">Our Services</h2>
+          <p class="text-center text-lg mb-12 max-w-3xl mx-auto text-gray-700 animate-fade-in-up animate-element" data-delay="0.2">
             At Vioneta, we are dedicated to being a trusted partner on the journey towards modern and sustainable agriculture. Our commitment is to empower farmers with transformative technologies and expert guidance to drive efficiency, profitability, and environmental stewardship in farming practices.
           </p>
-        </div>
 
-        <div class="row">
-          <div class="features">
-            <div
-              class="col-md-6 col-sm-6 wow fadeInUp"
-              data-wow-duration="300ms"
-              data-wow-delay="0ms"
-            >
-              <div class="media service-box">
-                <div class="pull-left">
-                  <i class="fa fa-leaf"></i>
-                </div>
-                <div class="media-body">
-                  <h4 class="media-heading">Smart Agriculture Solutions</h4>
-                  <p>
-                    We are committed to delivering comprehensive smart agriculture solutions tailored to meet the diverse needs of our customers.
-                  </p>
-                </div>
+          <div class="grid md:grid-cols-2 gap-10">
+            <div class="bg-gray-50 p-8 rounded-lg shadow-lg card-hover-effect animate-fade-in-up animate-element" data-delay="0.3">
+              <div class="text-green-500 text-5xl flex-shrink-0"><i class="fas fa-leaf"></i></div>
+              <div>
+                <h3 class="text-2xl font-semibold mb-3">Smart Agriculture Solutions</h3>
+                <p class="text-gray-600">We are committed to delivering comprehensive smart agriculture solutions tailored to meet the diverse needs of our customers.</p>
               </div>
             </div>
-            <!--/.col-md-4-->
-
-            <div
-              class="col-md-6 col-sm-6 wow fadeInUp"
-              data-wow-duration="300ms"
-              data-wow-delay="100ms"
-            >
-              <div class="media service-box">
-                <div class="pull-left">
-                  <i class="fa fa-user"></i>
-                </div>
-                <div class="media-body">
-                  <h4 class="media-heading">Consultation</h4>
-                  <p>
-                    Our expert team provides consultative services, collaborating closely with customers to understand their specific requirements and challenges.
-                  </p>
-                </div>
+            <div class="bg-gray-50 p-8 rounded-lg shadow-lg card-hover-effect flex items-start space-x-6 animate-fade-in-up animate-element" data-delay="0.4">
+              <div class="text-green-500 text-5xl flex-shrink-0"><i class="fas fa-user-tie"></i></div>
+              <div>
+                <h3 class="text-2xl font-semibold mb-3">Consultation & Training</h3>
+                <p class="text-gray-600">Our expert team provides consultative services, collaborating closely with customers to understand their specific requirements and challenges. We also offer comprehensive training and ongoing support.</p>
               </div>
             </div>
-            <!--/.col-md-4-->
+            <div class="bg-gray-50 p-8 rounded-lg shadow-lg card-hover-effect flex items-start space-x-6 animate-fade-in-up animate-element" data-delay="0.5">
+              <div class="text-green-500 text-5xl flex-shrink-0"><i class="fas fa-handshake"></i></div>
+              <div>
+                <h3 class="text-2xl font-semibold mb-3">Community & Collaboration</h3>
+                <p class="text-gray-600">Join a community of like-minded farmers and share best practices and insights. We also work with you to refine and improve our technology based on your feedback.</p>
+              </div>
+            </div>
+            <div class="bg-gray-50 p-8 rounded-lg shadow-lg card-hover-effect flex items-start space-x-6 animate-fade-in-up animate-element" data-delay="0.6">
+              <div class="text-green-500 text-5xl flex-shrink-0"><i class="fas fa-seedling"></i></div>
+              <div>
+                <h3 class="text-2xl font-semibold mb-3">Sustainability Focus</h3>
+                <p class="text-gray-600">Implement sustainable farming practices that benefit the environment and use technology to minimize water, chemical, and energy usage.</p>
+              </div>
+            </div>
           </div>
         </div>
-        <!--/.row-->
-      </div>
-      <!--/.container-->
-    </section>
-    <!--/#services-->
+      </section>
 
-    <section id="about">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title wow fadeInDown">About Us</h2>
-          <p class="wow fadeInDown">
-            We are a dedicated group of individuals united by a shared vision: to create a sustainable and connected agricultural future. Fueled by our passion for innovation and our deep-rooted commitment to the agricultural industry, we strive to revolutionize farming practices.
+      <!-- About Us Section -->
+      <section id="about" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-6">
+          <h2 class="text-4xl font-bold text-center mb-12 text-gradient animate-fade-in-up animate-element">About Us</h2>
+          <div class="flex flex-col lg:flex-row items-center gap-12">
+            <div class="lg:w-1/2 animate-fade-in-up animate-element" data-delay="0.2">
+              <img src="./images/about.png" alt="About Vioneta" class="rounded-lg shadow-xl" />
+            </div>
+            <div class="lg:w-1/2 space-y-6 animate-fade-in-up animate-element" data-delay="0.4">
+              <h3 class="text-3xl font-semibold text-green-700">Our Company</h3>
+              <p class="text-lg text-gray-700">
+                Vioneta pioneers transformative solutions at the intersection of technology and agriculture. With a passion for innovation and a commitment to sustainable farming practices, we specialize in delivering cutting-edge smart agriculture solutions.
+              </p>
+              <p class="text-lg text-gray-700">
+                Our mission is to revolutionize the agricultural landscape by harnessing the power of technology to address the challenges faced by farmers worldwide. Through our expertise in IoT, data analytics, edge computing, and automation, we offer a comprehensive suite of solutions tailored to optimize farming operations, increase productivity, and promote environmental stewardship.
+              </p>
+              <p class="text-lg text-gray-700">
+                Beyond innovative technology, our core values center around customer success and partnership. We prioritize understanding the unique needs of each farmer or agricultural enterprise, collaborating closely to deliver customized solutions and provide expert consultancy services. Our goal is to empower our clients with the tools, insights, and support necessary to thrive in an ever-evolving agricultural ecosystem.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Our Vision Section (Combines Problem, Market, SWOT) -->
+      <section id="our-vision" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-6">
+          <h2 class="text-4xl font-bold text-center mb-12 text-gradient animate-fade-in-up animate-element">Our Vision</h2>
+          <p class="text-center text-lg mb-12 max-w-3xl mx-auto text-gray-700 animate-fade-in-up animate-element" data-delay="0.2">
+            At Vioneta, we recognize the critical challenges facing modern agriculture and the immense opportunities within the rapidly growing Agritech market. Our vision is to empower farmers globally, driving sustainable growth and ensuring food security through innovative technology.
           </p>
-        </div>
 
-        <div class="row">
-          <div class="col-sm-6 wow fadeInLeft">
-            <img class="img-responsive" src="images/about.png" alt="" />
-          </div>
-
-          <div class="col-sm-6 wow fadeInRight">
-            <h3 class="column-title">Our Company</h3>
-            <p>
-              Vioneta pioneer transformative solutions at the intersection of technology and agriculture. With a passion for innovation and a commitment to sustainable farming practices, we specialize in delivering cutting-edge smart agriculture solutions.
-            </p>
-
-            <p>
-              Our mission is to revolutionize the agricultural landscape by harnessing the power of technology to address the challenges faced by farmers worldwide. Through our expertise in IoT, data analytics, edge computing, and automation, we offer a comprehensive suite of solutions tailored to optimize farming operations, increase productivity, and promote environmental stewardship.
-            </p>
-
-            <p>
-              Beyond innovative technology, our core values center around customer success and partnership. We prioritize understanding the unique needs of each farmer or agricultural enterprise, collaborating closely to deliver customized solutions and provide expert consultancy services. Our goal is to empower our clients with the tools, insights, and support necessary to thrive in an ever-evolving agricultural ecosystem.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!--/#about-->
-
-    <section id="team">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title wow fadeInDown">Our Team</h2>
-          <p class="wow fadeInDown">
-            Meet our team who drive the vision of vioneta.
-          </p>
-        </div>
-        <div class="container">
-          <div class="row vh-100">
-            <div class="col-sm-6 col-lg-3 my-auto">
-              <div class="box shadow-sm p-4">
-                <div class="image-wrapper mb-3">
-                  <img class="img-fluid" src="./images/team/01.png" alt="..." />
-                </div>
-                <div class="box-desc">
-                  <h5>Isuru Akalanka</h5>
-                  <p>Cheif Executive Officer</p>
-                </div>
-                <ul class="social">
-                  <!-- <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                  <li><a href="#"><i class="fa fa-twitter"></i></a></li> -->
-<!--                   <li><a href="#"><i class="fa fa-linkedin"></i></a></li> -->
-                  <li><a href="https://www.linkedin.com/in/isuru-wijesundara-53aaa264/"><i class="fa fa-linkedin"></i></a></li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-sm-6 col-lg-3 my-auto">
-              <div class="box shadow-sm p-4">
-                <div class="image-wrapper mb-3">
-                  <img class="img-fluid" src="./images/team/02.png" alt="..." />
-                </div>
-                <div class="box-desc">
-                  <h5>Charith Wijesundara</h5>
-                  <p>Chief Technical Officer(CTO)</p>
-                </div>
-                <ul class="social">
-<!--                   <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                  <li><a href="#"><i class="fa fa-twitter"></i></a></li> -->
-                   <li><a href="https://www.linkedin.com/in/charith-wijesundara-882b2598/"><i class="fa fa-linkedin"></i></a></li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-sm-6 col-lg-3 my-auto">
-              <div class="box shadow-sm p-4">
-                <div class="image-wrapper mb-3">
-                  <img class="img-fluid" src="./images/team/05.png" alt="..." />
-                </div>
-                <div class="box-desc">
-                  <h5>Wageesha Mallehe</h5>
-                  <p>Director Operations</p>
-                </div>
-                <ul class="social">
-                  <!-- <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                  <li><a href="#"><i class="fa fa-twitter"></i></a></li> -->
-                  <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                </ul>
-              </div>
-            </div>
-            <!-- <div class="col-sm-6 col-lg-3 my-auto">
-              <div class="box shadow-sm p-4">
-                <div class="image-wrapper mb-3">
-                  <img class="img-fluid" src="./images/team/03.png" alt="..." />
-                </div>
-                <div class="box-desc">
-                  <h5>Sunil Wijesundara</h5>
-                  <p>Co-Founder</p>
-                </div>
-                <ul class="social">
-                  <!-- <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                  <li><a href="#"><i class="fa fa-twitter"></i></a></li> -->
-                  <!-- <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                </ul>
-              </div> -->
-            <!-- </div> -->
-            <div class="col-sm-6 col-lg-3 my-auto">
-              <div class="box shadow-sm p-4">
-                <div class="image-wrapper mb-3">
-                  <img class="img-fluid" src="./images/team/04.png" alt="..." />
-                </div>
-                <div class="box-desc">
-                  <h5>Nipuna Dhananjaya</h5>
-                  <p>Director Marketing</p>
-                </div>
-                <ul class="social">
-                  <!-- <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                  <li><a href="#"><i class="fa fa-twitter"></i></a></li> -->
-<!--                   <li><a href="#"><i class="fa fa-linkedin"></i></a></li> -->
-                  <li><a href="https://www.linkedin.com/in/nipuna-wijesundara-9a952618b/"><i class="fa fa-linkedin"></i></a></li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-sm-6 col-lg-3 my-auto">
-              <div class="box shadow-sm p-4">
-                <div class="image-wrapper mb-3">
-                  <img class="img-fluid" src="./images/team/06.png" alt="..." />
-                </div>
-                <div class="box-desc">
-                  <h5>Jacob Kambuta</h5>
-                  <p>Director Agriculture </p>
-                </div>
-                <ul class="social">
-<!--                   <li><a href="#"><i class="fa fa-linkedin"></i></a></li> -->
-                  <li><a href="https://www.linkedin.com/in/jacob-kambuta-76511471/"><i class="fa fa-linkedin"></i></a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- <section id="business-stats">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title wow fadeInDown">Business Stats</h2>
-          <p class="wow fadeInDown">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
-            eget risus vitae massa <br />
-            semper aliquam quis mattis quam.
-          </p>
-        </div>
-
-        <div class="row text-center">
-          <div class="col-md-3 col-sm-6 col-xs-12">
-            <div
-              class="wow fadeInUp"
-              data-wow-duration="400ms"
-              data-wow-delay="0ms"
-            >
-              <div
-                class="business-stats"
-                data-digit="6850"
-                data-duration="1000"
-              ></div>
-              <strong>Clients</strong>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-6 col-xs-12">
-            <div
-              class="wow fadeInUp"
-              data-wow-duration="400ms"
-              data-wow-delay="100ms"
-            >
-              <div
-                class="business-stats"
-                data-digit="1465"
-                data-duration="1000"
-              ></div>
-              <strong>Completed</strong>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-6 col-xs-12">
-            <div
-              class="wow fadeInUp"
-              data-wow-duration="400ms"
-              data-wow-delay="200ms"
-            >
-              <div
-                class="business-stats"
-                data-digit="4325"
-                data-duration="1000"
-              ></div>
-              <strong>In Progress</strong>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-6 col-xs-12">
-            <div
-              class="wow fadeInUp"
-              data-wow-duration="400ms"
-              data-wow-delay="300ms"
-            >
-              <div
-                class="business-stats"
-                data-digit="2568"
-                data-duration="1000"
-              ></div>
-              <strong>Revenue</strong>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!--/#business-stats-->
-
-    <!-- <section id="pricing">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title wow fadeInDown">Pricing</h2>
-          <p class="wow fadeInDown">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
-            eget risus vitae massa <br />
-            semper aliquam quis mattis quam.
-          </p>
-        </div>
-
-        <div class="row">
-          <div class="col-md-3 col-sm-6 col-xs-12">
-            <div
-              class="wow zoomIn"
-              data-wow-duration="400ms"
-              data-wow-delay="0ms"
-            >
-              <ul class="pricing">
-                <li class="plan-header">
-                  <div class="price-duration">
-                    <span class="price"> $45 </span>
-                    <span class="duration"> per month </span>
-                  </div>
-
-                  <div class="plan-name">Basic</div>
-                </li>
-                <li><strong>1</strong> DOMAIN</li>
-                <li><strong>100GB</strong> DISK SPACE</li>
-                <li><strong>UNLIMITED</strong> BANDWIDTH</li>
-                <li>SHARED SSL CERTIFICATE</li>
-                <li><strong>10</strong> EMAIL ADDRESS</li>
-                <li><strong>24/7</strong> SUPPORT</li>
-                <li class="plan-purchase">
-                  <a class="btn btn-primary" href="#">Get It Now!</a>
-                </li>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+            <!-- Problem Summary -->
+            <div class="bg-white p-8 rounded-lg shadow-lg card-hover-effect animate-fade-in-up animate-element" data-delay="0.3">
+              <div class="text-green-500 text-5xl mb-4"><i class="fas fa-exclamation-circle"></i></div>
+              <h3 class="text-2xl font-semibold mb-4">Addressing Key Challenges</h3>
+              <ul class="list-disc list-inside text-gray-600 space-y-2">
+                <li>Outdated farming methods & lack of actionable data.</li>
+                <li>Unreliable internet connectivity in rural areas.</li>
+                <li>Inefficient resource usage (water, fertilizers, chemicals).</li>
+                <li>Significant knowledge gap in agri-tech adoption.</li>
+                <li>Need for affordable, offline-capable intelligent systems.</li>
               </ul>
             </div>
-          </div>
-          <div class="col-md-3 col-sm-6 col-xs-12">
-            <div
-              class="wow zoomIn"
-              data-wow-duration="400ms"
-              data-wow-delay="200ms"
-            >
-              <ul class="pricing featured">
-                <li class="plan-header">
-                  <div class="price-duration">
-                    <span class="price"> $85 </span>
-                    <span class="duration"> per month </span>
-                  </div>
 
-                  <div class="plan-name">Business</div>
-                </li>
-                <li><strong>5</strong> DOMAIN</li>
-                <li><strong>500GB</strong> DISK SPACE</li>
-                <li><strong>UNLIMITED</strong> BANDWIDTH</li>
-                <li>SHARED SSL CERTIFICATE</li>
-                <li><strong>30</strong> EMAIL ADDRESS</li>
-                <li><strong>24/7</strong> SUPPORT</li>
-                <li class="plan-purchase">
-                  <a class="btn btn-primary" href="#">Get It Now!</a>
-                </li>
+            <!-- Market Opportunity Summary -->
+            <div class="bg-white p-8 rounded-lg shadow-lg card-hover-effect animate-fade-in-up animate-element" data-delay="0.5">
+              <div class="text-green-500 text-5xl mb-4"><i class="fas fa-chart-line"></i></div>
+              <h3 class="text-2xl font-semibold mb-4">Seizing Market Opportunities</h3>
+              <ul class="list-disc list-inside text-gray-600 space-y-2">
+                <li>Global Agritech market valued at $24.5B (2023).</li>
+                <li>Expected to reach $49.5B by 2031 (12.33% CAGR).</li>
+                <li>New Zealand Agritech target: $4.8B revenue by 2030.</li>
+                <li>Growing global population demands increased food supply.</li>
               </ul>
             </div>
-          </div>
-          <div class="col-md-3 col-sm-6 col-xs-12">
-            <div
-              class="wow zoomIn"
-              data-wow-duration="400ms"
-              data-wow-delay="400ms"
-            >
-              <ul class="pricing">
-                <li class="plan-header">
-                  <div class="price-duration">
-                    <span class="price"> $125 </span>
-                    <span class="duration"> per month </span>
-                  </div>
 
-                  <div class="plan-name">Professional</div>
-                </li>
-                <li><strong>10</strong> DOMAIN</li>
-                <li><strong>2GB</strong> DISK SPACE</li>
-                <li><strong>UNLIMITED</strong> BANDWIDTH</li>
-                <li>SHARED SSL CERTIFICATE</li>
-                <li><strong>50</strong> EMAIL ADDRESS</li>
-                <li><strong>24/7</strong> SUPPORT</li>
-                <li class="plan-purchase">
-                  <a class="btn btn-primary" href="#">Get It Now!</a>
-                </li>
+            <!-- Strengths & Opportunities -->
+            <div class="bg-white p-8 rounded-lg shadow-lg card-hover-effect animate-fade-in-up animate-element" data-delay="0.7">
+              <div class="text-green-500 text-5xl mb-4"><i class="fas fa-seedling"></i></div>
+              <h3 class="text-2xl font-semibold mb-4">Our Core Strengths & Opportunities</h3>
+              <ul class="list-disc list-inside text-gray-600 space-y-2">
+                <li>Sustainable, easy-to-use, and affordable solutions.</li>
+                <li>Pioneering edge computing for offline insights.</li>
+                <li>Integrated ecosystem and data-driven analytics.</li>
+                <li>Commitment to inclusivity for all farmers.</li>
+                <li>Opportunity to feed a growing global population.</li>
               </ul>
             </div>
-          </div>
-          <div class="col-md-3 col-sm-6 col-xs-12">
-            <div
-              class="wow zoomIn"
-              data-wow-duration="400ms"
-              data-wow-delay="600ms"
-            >
-              <ul class="pricing">
-                <li class="plan-header">
-                  <div class="price-duration">
-                    <span class="price"> $185 </span>
-                    <span class="duration"> per month </span>
-                  </div>
 
-                  <div class="plan-name">Extended</div>
-                </li>
-                <li><strong>15</strong> DOMAIN</li>
-                <li><strong>10GB</strong> DISK SPACE</li>
-                <li><strong>UNLIMITED</strong> BANDWIDTH</li>
-                <li>SHARED SSL CERTIFICATE</li>
-                <li><strong>100</strong> EMAIL ADDRESS</li>
-                <li><strong>24/7</strong> SUPPORT</li>
-                <li class="plan-purchase">
-                  <a class="btn btn-primary" href="#">Get It Now!</a>
-                </li>
-              </ul>
-            </div>
           </div>
         </div>
-      </div>
-    </section> -->
-    <!--/#pricing-->
+      </section>
 
-    <!-- <section class="testimonial-area" id="testimonial">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title wow fadeInDown">Testimonial</h2>
-          <p class="wow fadeInDown">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
-            eget risus vitae massa <br />
-            semper aliquam quis mattis quam.
+      <!-- Team Section -->
+      <section id="team" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-6">
+          <h2 class="text-4xl font-bold text-center mb-12 text-gradient animate-fade-in-up animate-element">Our Team</h2>
+          <p class="text-center text-lg mb-12 max-w-3xl mx-auto text-gray-700 animate-fade-in-up animate-element" data-delay="0.2">
+            Meet our dedicated team who drive the vision of Vioneta.
           </p>
-        </div>
-        <div class="row">
-          <div class="col-md-4">
-            <div
-              class="single-testimonial animate_fade_in"
-              style="opacity: 1; right: 0px"
-            >
-              <div class="row">
-                <div class="col-xs-12">
-                  <blockquote>
-                    Sontrary to popular belief, Lorem Ipsuis no simply random
-                    text. It has roots in a piece of classical Layears old.
-                    belief, Lorem Ipsuis not simply
-                  </blockquote>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-xs-12">
-                  <h5>John Bond</h5>
-                  <h6>Lorem Ipsuis simply</h6>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div
-              class="single-testimonial animate_fade_in"
-              style="opacity: 1; right: 0px"
-            >
-              <div class="row">
-                <div class="col-xs-12">
-                  <blockquote>
-                    Tontrary to popular belief, Lorem Ipsuis no simply random
-                    text. It has roots in a piece of classical Layears old.
-                    belief, Lorem Ipsuis not simply
-                  </blockquote>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-xs-12">
-                  <h5>John Bond</h5>
-                  <h6>Lorem Ipsuis simply</h6>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div
-              class="single-testimonial animate_fade_in"
-              style="opacity: 1; right: 0px"
-            >
-              <div class="row">
-                <div class="col-xs-12">
-                  <blockquote>
-                    Aontrary to popular belief, Lorem Ipsuis no simply random
-                    text. It has roots in a piece of classical Layears old.
-                    belief, Lorem Ipsuis not simply
-                  </blockquote>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-xs-12">
-                  <h5>John Bond</h5>
-                  <h6>Lorem Ipsuis simply</h6>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>  -->
 
-    <section id="contact-us">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title wow fadeInDown">Contact Us</h2>
-          <p class="wow fadeInDown">
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+            <!-- Isuru Akalanka -->
+            <div class="bg-white p-8 rounded-lg shadow-lg text-center card-hover-effect animate-fade-in-up animate-element" data-delay="0.3">
+              <img src="./images/team/01.png" alt="Isuru Akalanka" class="rounded-full mx-auto mb-6 w-36 h-36 object-cover border-4 border-green-500" />
+              <h3 class="text-2xl font-semibold mb-2">Isuru Akalanka</h3>
+              <p class="text-green-700 font-medium mb-4">Chief Executive Officer (CEO)</p>
+              <p class="text-gray-600 text-sm mb-4">Strategic leadership, business development, product vision, and fundraising.</p>
+              <a href="https://www.linkedin.com/in/isuru-wijesundara-53aaa264/" target="_blank" class="text-gray-500 hover:text-blue-600 transition duration-300">
+                <i class="fab fa-linkedin text-2xl"></i>
+              </a>
+            </div>
+            <!-- Charith Madhuranga -->
+            <div class="bg-white p-8 rounded-lg shadow-lg text-center card-hover-effect animate-fade-in-up animate-element" data-delay="0.4">
+              <img src="./images/team/02.png" alt="Charith Madhuranga" class="rounded-full mx-auto mb-6 w-36 h-36 object-cover border-4 border-green-500" />
+              <h3 class="text-2xl font-semibold mb-2">Charith Madhuranga</h3>
+              <p class="text-green-700 font-medium mb-4">Chief Technology Officer (CTO)</p>
+              <p class="text-gray-600 text-sm mb-4">Edge computing, embedded systems, agricultural technology, product innovation.</p>
+              <a href="https://www.linkedin.com/in/charith-wijesundara-882b2598/" target="_blank" class="text-gray-500 hover:text-blue-600 transition duration-300">
+                <i class="fab fa-linkedin text-2xl"></i>
+              </a>
+            </div>
+            <!-- Nipuna Dhananjaya -->
+            <div class="bg-white p-8 rounded-lg shadow-lg text-center card-hover-effect animate-fade-in-up animate-element" data-delay="0.5">
+              <img src="./images/team/04.png" alt="Nipuna Dhananjaya" class="rounded-full mx-auto mb-6 w-36 h-36 object-cover border-4 border-green-500" />
+              <h3 class="text-2xl font-semibold mb-2">Nipuna Dhananjaya</h3>
+              <p class="text-green-700 font-medium mb-4">Director of Marketing (CMO)</p>
+              <p class="text-gray-600 text-sm mb-4">Digital marketing, branding, customer acquisition, strategic communications.</p>
+              <a href="https://www.linkedin.com/in/nipuna-wijesundara-9a952618b/" target="_blank" class="text-gray-500 hover:text-blue-600 transition duration-300">
+                <i class="fab fa-linkedin text-2xl"></i>
+              </a>
+            </div>
+            <!-- Wageesha Mallehe -->
+            <div class="bg-white p-8 rounded-lg shadow-lg text-center card-hover-effect animate-fade-in-up animate-element" data-delay="0.6">
+              <img src="./images/team/05.png" alt="Wageesha Mallehe" class="rounded-full mx-auto mb-6 w-36 h-36 object-cover border-4 border-green-500" />
+              <h3 class="text-2xl font-semibold mb-2">Wageesha Mallehe</h3>
+              <p class="text-green-700 font-medium mb-4">Early Investor & Advisor</p>
+              <p class="text-gray-600 text-sm mb-4">Founding investor providing initial capital and advisory support.</p>
+              <a href="#" target="_blank" class="text-gray-500 hover:text-blue-600 transition duration-300">
+                <i class="fab fa-linkedin text-2xl"></i>
+              </a>
+            </div>
+            <!-- Jacob Kambuta -->
+            <div class="bg-white p-8 rounded-lg shadow-lg text-center card-hover-effect animate-fade-in-up animate-element" data-delay="0.7">
+              <img src="./images/team/06.png" alt="Jacob Kambuta" class="rounded-full mx-auto mb-6 w-36 h-36 object-cover border-4 border-green-500" />
+              <h3 class="text-2xl font-semibold mb-2">Jacob Kambuta</h3>
+              <p class="text-green-700 font-medium mb-4">Director of Agriculture</p>
+              <p class="text-gray-600 text-sm mb-4">Agricultural operations, farmer engagement, agro-product testing.</p>
+              <a href="https://www.linkedin.com/in/jacob-kambuta-76511471/" target="_blank" class="text-gray-500 hover:text-blue-600 transition duration-300">
+                <i class="fab fa-linkedin text-2xl"></i>
+              </a>
+            </div>
+            <!-- Sunil Wijesundara -->
+            <div class="bg-white p-8 rounded-lg shadow-lg text-center card-hover-effect animate-fade-in-up animate-element" data-delay="0.8">
+              <img src="./images/team/03.png" alt="Sunil Wijesundara" class="rounded-full mx-auto mb-6 w-36 h-36 object-cover border-4 border-green-500" />
+              <h3 class="text-2xl font-semibold mb-2">Sunil Wijesundara</h3>
+              <p class="text-green-700 font-medium mb-4">Early Investor & Advisor</p>
+              <p class="text-gray-600 text-sm mb-4">Founding investor providing initial capital and advisory support.</p>
+              <a href="#" target="_blank" class="text-gray-500 hover:text-blue-600 transition duration-300">
+                <i class="fab fa-linkedin text-2xl"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Us Section -->
+      <section id="contact" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+          <h2 class="text-4xl font-bold text-center mb-12 text-gradient animate-fade-in-up animate-element">Contact Us</h2>
+          <p class="text-center text-lg mb-12 max-w-3xl mx-auto text-gray-700 animate-fade-in-up animate-element" data-delay="0.2">
             We're here to help you explore innovative agricultural solutions tailored to your needs. Whether you have questions about our smart agriculture products, need consultancy services, or wish to collaborate on transformative agricultural projects, our team is ready to assist.
           </p>
-        </div>
-      </div>
-    </section>
-    <!--/#contact-us-->
 
-    <section id="contact">
-      <div class="container">
-        <div class="container contact-info">
-          <div class="row">
-            <div class="col-sm-4 col-md-4">
-              <div class="contact-form">
-                <h3>Contact Info</h3>
-
-                <address>
-                  <strong>Vioneta Ltd,</strong><br />
-                  14 Darren Crescent,<br />
-                  Half moon bay,<br />
-                  Auckland  2012,<br />
-                  New zealand<br /><br/>
-                  Phone: 0064-224014067<br />
-                  Email: admin@vioneta.com
-                </address>
-              </div>
+          <div class="grid md:grid-cols-2 gap-12">
+            <div class="bg-gray-50 p-8 rounded-lg shadow-lg animate-fade-in-up animate-element" data-delay="0.3">
+              <h3 class="text-2xl font-semibold mb-6 text-green-700">Contact Info</h3>
+              <address class="not-italic text-gray-700 space-y-2">
+                <p><strong>Vioneta Ltd,</strong></p>
+                <p>14 Darren Crescent,</p>
+                <p>Half moon bay,</p>
+                <p>Auckland 2012,</p>
+                <p>New Zealand</p>
+                <p class="mt-4"><i class="fas fa-phone-alt text-green-500 mr-2"></i> Phone: 0064-224014067</p>
+                <p><i class="fas fa-envelope text-green-500 mr-2"></i> Email: admin@vioneta.com</p>
+              </address>
             </div>
-            <div class="col-sm-8 col-md-8">
-              <div class="contact-form">
-                <form
-                  id="main-contact-form"
-                  name="contact-form"
-                  method="post"
-                  action="#"
+            <div class="bg-gray-50 p-8 rounded-lg shadow-lg animate-fade-in-up animate-element" data-delay="0.4">
+              <h3 class="text-2xl font-semibold mb-6 text-green-700">Send Us a Message</h3>
+              <form id="contact-form" class="space-y-6">
+                <div>
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Your Name"
+                    class="w-full p-3 rounded-md border border-gray-300 focus:ring-2 focus:ring-green-500 focus:border-transparent transition duration-300"
+                    required
+                  />
+                </div>
+                <div>
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Your Email"
+                    class="w-full p-3 rounded-md border border-gray-300 focus:ring-2 focus:ring-green-500 focus:border-transparent transition duration-300"
+                    required
+                  />
+                </div>
+                <div>
+                  <input
+                    type="text"
+                    name="subject"
+                    placeholder="Subject"
+                    class="w-full p-3 rounded-md border border-gray-300 focus:ring-2 focus:ring-green-500 focus:border-transparent transition duration-300"
+                    required
+                  />
+                </div>
+                <div>
+                  <textarea
+                    name="message"
+                    rows="6"
+                    placeholder="Your Message"
+                    class="w-full p-3 rounded-md border border-gray-300 focus:ring-2 focus:ring-green-500 focus:border-transparent transition duration-300"
+                    required
+                  ></textarea>
+                </div>
+                <button
+                  type="submit"
+                  class="w-full bg-green-600 text-white py-3 px-6 rounded-md font-semibold hover:bg-green-700 transition duration-300 shadow-md transform hover:scale-105"
                 >
-                  <div class="form-group">
-                    <input
-                      type="text"
-                      name="name"
-                      class="form-control"
-                      placeholder="Name"
-                      required
-                    />
-                  </div>
-                  <div class="form-group">
-                    <input
-                      type="email"
-                      name="email"
-                      class="form-control"
-                      placeholder="Email"
-                      required
-                    />
-                  </div>
-                  <div class="form-group">
-                    <input
-                      type="text"
-                      name="subject"
-                      class="form-control"
-                      placeholder="Subject"
-                      required
-                    />
-                  </div>
-                  <div class="form-group">
-                    <textarea
-                      name="message"
-                      class="form-control"
-                      rows="8"
-                      placeholder="Message"
-                      required
-                    ></textarea>
-                  </div>
-                  <button type="submit" class="btn btn-primary">
-                    Send Message
-                  </button>
-                </form>
-              </div>
+                  Send Message
+                </button>
+              </form>
+              <div id="form-message" class="mt-4 text-center text-sm font-medium"></div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-    <!--/#bottom-->
+      </section>
+    </main>
 
-    <footer id="footer">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-6">
-            &copy; 2020-2023 Vioneta Limited
-          </div>
-          <div class="col-sm-6">
-            <ul class="social-icons">
-              <li>
-                <a href="#"><i class="fa fa-facebook"></i></a>
-              </li>
-              <li>
-                <a href="https://twitter.com/Vionetaiot"><i class="fa fa-twitter"></i></a>
-              </li>
-              <li>
-                <a href="https://www.linkedin.com/company/vioneta/"><i class="fa fa-linkedin"></i></a>
-              </li>
-              <li>
-                <a href="#"><i class="fa fa-youtube"></i></a>
-              </li>
-              <li>
-                <a href="https://github.com/Vioneta"><i class="fa fa-github"></i></a>
-              </li>
-            </ul>
-          </div>
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-10">
+      <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+        <div class="mb-4 md:mb-0">
+          <p>&copy; 2020-2023 Vioneta Limited. All rights reserved.</p>
+        </div>
+        <div>
+          <ul class="flex space-x-6">
+            <li>
+              <a href="#" class="text-gray-400 hover:text-white transition duration-300"><i class="fab fa-facebook-f text-xl"></i></a>
+            </li>
+            <li>
+              <a href="https://twitter.com/Vionetaiot" target="_blank" class="text-gray-400 hover:text-white transition duration-300"><i class="fab fa-twitter text-xl"></i></a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/company/vioneta/" target="_blank" class="text-gray-400 hover:text-white transition duration-300"><i class="fab fa-linkedin-in text-xl"></i></a>
+            </li>
+            <li>
+              <a href="#" class="text-gray-400 hover:text-white transition duration-300"><i class="fab fa-youtube text-xl"></i></a>
+            </li>
+            <li>
+              <a href="https://github.com/Vioneta" target="_blank" class="text-gray-400 hover:text-white transition duration-300"><i class="fab fa-github text-xl"></i></a>
+            </li>
+          </ul>
         </div>
       </div>
     </footer>
-    <!--/#footer-->
 
-    <script src="js/jquery.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/mousescroll.js"></script>
-    <script src="js/smoothscroll.js"></script>
-    <script src="js/jquery.prettyphoto.js"></script>
-    <script src="js/jquery.isotope.min.js"></script>
-    <script src="js/jquery.inview.min.js"></script>
-    <script src="js/wow.min.js"></script>
-    <script src="js/custom-scripts.js"></script>
-    <!--Start of Tawk.to Script-->
-<script type="text/javascript">
-  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-  (function(){
-  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-  s1.async=true;
-  s1.src='https://embed.tawk.to/65965b6c0ff6374032bc08f0/1hj9la8mu';
-  s1.charset='UTF-8';
-  s1.setAttribute('crossorigin','*');
-  s0.parentNode.insertBefore(s1,s0);
-  })();
-  </script>
-  <!--End of Tawk.to Script-->
+    <!-- GSAP and Anime.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+
+    <script>
+      // Mobile menu toggle
+      document.getElementById('mobile-menu-button').addEventListener('click', function() {
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenu.classList.toggle('open');
+      });
+
+      // Smooth scrolling for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const mobileMenu = document.getElementById('mobile-menu');
+          if (mobileMenu.classList.contains('open')) {
+            mobileMenu.classList.remove('open'); // Hide mobile menu on click if open
+          }
+          document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+          });
+        });
+      });
+
+      // GSAP Animations
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Function to apply fade-in-up animation for scroll-triggered elements
+      function applyFadeInUp(elements) {
+        elements.forEach(element => {
+          gsap.fromTo(element,
+            { y: 50, opacity: 0, visibility: 'hidden' }, // From state
+            {
+              y: 0,
+              opacity: 1,
+              visibility: 'visible', // To state
+              duration: 1, // Increased duration for smoothness
+              ease: "power2.out",
+              stagger: 0.1,
+              scrollTrigger: {
+                trigger: element,
+                start: "top 80%", // Trigger earlier for a smoother feel
+                toggleActions: "play none none none",
+                once: true
+              }
+            }
+          );
+        });
+      }
+
+      // Function to apply scale-in animation for scroll-triggered elements
+      function applyScaleIn(elements) {
+        elements.forEach(element => {
+          gsap.fromTo(element,
+            { scale: 0.8, opacity: 0, visibility: 'hidden' }, // From state
+            {
+              scale: 1,
+              opacity: 1,
+              visibility: 'visible', // To state
+              duration: 1, // Increased duration for smoothness
+              ease: "back.out(1.7)",
+              scrollTrigger: {
+                trigger: element,
+                start: "top 80%", // Trigger earlier for a smoother feel
+                toggleActions: "play none none none",
+                once: true
+              }
+            }
+          );
+        });
+      }
+
+      // Initial animations for Hero Section elements using a timeline
+      const heroTimeline = gsap.timeline({ defaults: { ease: "power4.out", duration: 1.2 } });
+
+      heroTimeline
+        .fromTo("#hero-title", { y: 50, opacity: 0, visibility: 'hidden' }, { y: 0, opacity: 1, visibility: 'visible' })
+        .fromTo("#hero-subtitle", { y: 50, opacity: 0, visibility: 'hidden' }, { y: 0, opacity: 1, visibility: 'visible' }, "-=0.8") // Overlap with title animation
+        .fromTo("#hero-button", { y: 50, opacity: 0, visibility: 'hidden' }, { y: 0, opacity: 1, visibility: 'visible' }, "-=0.7"); // Overlap with subtitle animation
+
+
+      // Apply scroll-triggered animations to all relevant elements
+      document.addEventListener('DOMContentLoaded', () => {
+        // Select elements that are not part of the hero section and have animation classes
+        const sectionsToAnimate = document.querySelectorAll('section:not(#home) .animate-fade-in-up');
+        applyFadeInUp(sectionsToAnimate);
+
+        const scaleInElements = document.querySelectorAll('.animate-scale-in');
+        applyScaleIn(scaleInElements);
+      });
+
+
+      // Anime.js for background pulse
+      anime({
+        targets: '.animate-pulse-slow',
+        scale: [0.8, 1.2],
+        opacity: [0.1, 0.3, 0.1],
+        duration: 8000,
+        easing: 'easeInOutQuad',
+        loop: true,
+        direction: 'alternate',
+        delay: anime.stagger(200)
+      });
+
+      anime({
+        targets: '.animate-pulse-medium',
+        scale: [0.9, 1.1],
+        opacity: [0.1, 0.25, 0.1],
+        duration: 6000,
+        easing: 'easeInOutQuad',
+        loop: true,
+        direction: 'alternate',
+        delay: anime.stagger(150)
+      });
+
+      anime({
+        targets: '.animate-pulse-fast',
+        scale: [0.7, 1.3],
+        opacity: [0.1, 0.35, 0.1],
+        duration: 4000,
+        easing: 'easeInOutQuad',
+        loop: true,
+        direction: 'alternate',
+        delay: anime.stagger(100)
+      });
+
+      // Simple form submission handling (client-client only)
+      document.getElementById('contact-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const messageDiv = document.getElementById('form-message');
+        messageDiv.innerHTML = '<span class="text-blue-500">Sending your message...</span>';
+
+        // Simulate API call
+        setTimeout(() => {
+          messageDiv.innerHTML = '<span class="text-green-500">Message sent successfully! We will get back to you soon.</span>';
+          this.reset();
+        }, 2000);
+      });
+
+// Background Carousel Logic
+const carouselItems = document.querySelectorAll('.hero-background-carousel-item');
+let currentCarouselIndex = 0;
+
+// Set the first item to active initially
+if (carouselItems.length > 0) {
+  carouselItems[0].classList.add('active');
+}
+
+function showNextCarouselItem() {
+  // Fade out current item
+  gsap.to(carouselItems[currentCarouselIndex], { opacity: 0, duration: 1.5, ease: "power2.out" });
+  carouselItems[currentCarouselIndex].classList.remove('active');
+
+  // Update index
+  currentCarouselIndex = (currentCarouselIndex + 1) % carouselItems.length;
+
+  // Fade in next item
+  gsap.to(carouselItems[currentCarouselIndex], { opacity: 1, duration: 1.5, ease: "power2.inOut" });
+  carouselItems[currentCarouselIndex].classList.add('active');
+}
+
+// Start the carousel
+setInterval(showNextCarouselItem, 5000); // Change image every 5 seconds
+    </script>
   </body>
 </html>
