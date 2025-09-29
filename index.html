@@ -105,10 +105,8 @@
         <div class="hidden lg:flex space-x-8 items-center">
           <a href="#home" class="text-gray-600 hover:text-green-700 font-medium transition duration-300 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded-md px-2 py-1">Home</a>
           <a href="#solution" class="text-gray-600 hover:text-green-700 font-medium transition duration-300 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded-md px-2 py-1">Solution</a>
-          <a href="#products" class="text-gray-600 hover:text-green-700 font-medium transition duration-300 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded-md px-2 py-1">Products</a>
           <a href="#services" class="text-gray-600 hover:text-green-700 font-medium transition duration-300 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded-md px-2 py-1">Services</a>
           <a href="#about" class="text-gray-600 hover:text-green-700 font-medium transition duration-300 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded-md px-2 py-1">About</a>
-          <a href="#our-vision" class="text-gray-600 hover:text-green-700 font-medium transition duration-300 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded-md px-2 py-1">Our Vision</a>
           <a href="#team" class="text-gray-600 hover:text-green-700 font-medium transition duration-300 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded-md px-2 py-1">Team</a>
           <a href="#contact" class="text-gray-600 hover:text-green-700 font-medium transition duration-300 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded-md px-2 py-1">Contact</a>
         </div>
@@ -122,10 +120,8 @@
       <div id="mobile-menu" class="lg:hidden bg-white py-0">
         <a href="#home" class="block px-6 py-3 text-gray-600 hover:text-green-700 font-medium transition duration-300 text-center">Home</a>
         <a href="#solution" class="block px-6 py-3 text-gray-600 hover:text-green-700 font-medium transition duration-300 text-center">Solution</a>
-        <a href="#products" class="block px-6 py-3 text-gray-600 hover:text-green-700 font-medium transition duration-300 text-center">Products</a>
         <a href="#services" class="block px-6 py-3 text-gray-600 hover:text-green-700 font-medium transition duration-300 text-center">Services</a>
         <a href="#about" class="block px-6 py-3 text-gray-600 hover:text-green-700 font-medium transition duration-300 text-center">About</a>
-        <a href="#our-vision" class="block px-6 py-3 text-gray-600 hover:text-green-700 font-medium transition duration-300 text-center">Our Vision</a>
         <a href="#team" class="block px-6 py-3 text-gray-600 hover:text-green-700 font-medium transition duration-300 text-center">Team</a>
         <a href="#contact" class="block px-6 py-3 text-gray-600 hover:text-green-700 font-medium transition duration-300 text-center">Contact</a>
       </div>
@@ -160,226 +156,299 @@
   </div>
 
   <div class="container mx-auto px-6 text-center z-10">
+    <span class="inline-block mb-4 px-3 py-1 rounded-full bg-white/20 text-white text-xs font-semibold tracking-wider animate-element">Edge AI • Automation • Sustainability</span>
     <h1 id="hero-title" class="text-5xl md:text-7xl font-extrabold leading-tight mb-6 animate-element">
       Harvesting Tomorrow's Agriculture
     </h1>
-    <p id="hero-subtitle" class="text-xl md:text-2xl mb-10 animate-element">
-      Cutting-Edge Solutions for Sustainable Farming.
+    <p id="hero-subtitle" class="text-xl md:text-2xl mb-10 max-w-3xl mx-auto animate-element">
+      Unify sensors, cameras, and automation into a single intelligent edge platform.
     </p>
-    <a id="hero-button" href="#products" class="inline-block bg-white text-green-700 hover:bg-gray-100 px-8 py-4 rounded-full text-lg font-semibold shadow-lg transform hover:scale-105 transition duration-300 animate-element">
-      Learn More
-    </a>
+    <div class="flex items-center justify-center gap-4 animate-element">
+      <a id="hero-button" href="#solution" class="inline-block bg-white text-green-700 hover:bg-gray-100 px-8 py-4 rounded-full text-lg font-semibold shadow-lg transform hover:scale-105 transition duration-300">
+        Explore Solution
+      </a>
+      <a href="#contact" class="inline-block bg-transparent border border-white/80 text-white hover:bg-white/10 px-8 py-4 rounded-full text-lg font-semibold transition duration-300">
+        Talk to Us
+      </a>
+    </div>
   </div>
 </section>
 
       <!-- Solution Section -->
       <section id="solution" class="py-20 bg-white">
         <div class="container mx-auto px-6">
-          <h2 class="text-4xl font-bold text-center mb-12 text-gradient animate-fade-in-up animate-element">Our Solution</h2>
-          <div class="flex flex-col lg:flex-row items-center gap-12">
-            <div class="lg:w-1/2 animate-fade-in-up animate-element" data-delay="0.2">
-              <img src="./images/vioneta-platform.png" alt="Vioneta Platform" class="rounded-lg shadow-xl" />
-            </div>
-            <div class="lg:w-1/2 space-y-6 animate-fade-in-up animate-element" data-delay="0.4">
-              <p class="text-lg text-gray-700">
-                Vioneta Agro Platform delivers a comprehensive, scalable, and intelligent infrastructure for modern agriculture.
+          <!-- Heading -->
+          <h2 class="text-4xl font-bold text-center mb-12 text-gradient animate-fade-in-up animate-element">
+            Our Solution
+          </h2>
+      
+          <!-- New Split Layout -->
+          <div class="grid lg:grid-cols-2 gap-12 items-center animate-fade-in-up animate-element">
+            <!-- Left: Copy + CTAs + Feature bullets -->
+            <div class="space-y-7">
+              <span class="inline-block px-3 py-1 rounded-full bg-green-100 text-green-800 text-xs font-semibold tracking-wider">Edge AI • Automation • Offline-first</span>
+              <h3 class="text-4xl md:text-5xl font-extrabold leading-tight text-gray-900">
+                A unified platform to <span class="text-gradient">monitor, decide, and automate</span> your farm
+              </h3>
+              <p class="text-gray-700 text-lg">
+                Vioneta brings sensors, cameras, and machinery into one intelligent edge system. Get real‑time insights and execute automations even without internet connectivity.
               </p>
-              <ul class="list-disc list-inside text-gray-700 space-y-3">
-                <li><strong class="text-green-600">Proprietary Edge Computing:</strong> Enables local, offline data processing, providing farmers with real-time insights regardless of connectivity.</li>
-                <li><strong class="text-green-600">Centralized Data Hub:</strong> Collects, processes, and translates complex machine and sensor data into clear, actionable information for critical decision-making.</li>
-                <li><strong class="text-green-600">Seamless Integration:</strong> Integrates sensors, cameras, agriculture machinery, AI-enabled decision support systems with chatbots, machine learning algorithms, data analytics, and automation to optimize irrigation, fertilization, and crop monitoring.</li>
-                <li><strong class="text-green-600">Vioneta Academy:</strong> Complemented by our academy, we provide structured training and support to ensure successful adoption and maximize the impact of our technology on farm productivity and sustainability.</li>
-              </ul>
+              <div class="flex flex-wrap gap-4">
+                <a href="#contact" class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-semibold shadow-md">Talk to Us</a>
+                <a href="#services" class="bg-white hover:bg-gray-100 text-green-700 px-6 py-3 rounded-lg font-semibold shadow-sm border">Explore Services</a>
+              </div>
+              <!-- Feature bullets aligned to use cases -->
+              <div class="grid sm:grid-cols-2 gap-5 pt-4">
+                <div class="flex items-start gap-3">
+                  <span class="text-green-600 mt-1"><i class="fa-solid fa-microchip"></i></span>
+                  <div>
+                    <p class="font-semibold text-gray-900">Edge AI & Vision</p>
+                    <p class="text-gray-600 text-sm">Wellness analytics, weight estimation, anomaly detection on‑device.</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <span class="text-green-600 mt-1"><i class="fa-solid fa-wifi"></i></span>
+                  <div>
+                    <p class="font-semibold text-gray-900">Interoperable Sensors</p>
+                    <p class="text-gray-600 text-sm">LoRa, RS485/Modbus, IP cameras; CO₂, NH₃, T/RH, flow, leaf wetness.</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <span class="text-green-600 mt-1"><i class="fa-solid fa-gears"></i></span>
+                  <div>
+                    <p class="font-semibold text-gray-900">Automation & Control</p>
+                    <p class="text-gray-600 text-sm">Irrigation, fertigation, ventilation, lighting with rules & schedules.</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <span class="text-green-600 mt-1"><i class="fa-solid fa-layer-group"></i></span>
+                  <div>
+                    <p class="font-semibold text-gray-900">Deployable Modules</p>
+                    <p class="text-gray-600 text-sm">Containerized apps tailored for vineyards, greenhouses, poultry, pigs, and assets.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Tailored modules reflecting user cases -->
+              <div class="grid sm:grid-cols-2 gap-4 pt-4">
+                <div class="flex items-start gap-3">
+                  <span class="text-green-600 mt-1"><i class="fa-solid fa-drumstick-bite"></i></span>
+                  <div>
+                    <p class="font-semibold text-gray-900">Poultry</p>
+                    <p class="text-gray-600 text-sm">Vocalization‑based wellness, CV weight checks, automated egg counting.</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <span class="text-green-600 mt-1"><i class="fa-solid fa-piggy-bank"></i></span>
+                  <div>
+                    <p class="font-semibold text-gray-900">Pig Production</p>
+                    <p class="text-gray-600 text-sm">Digital logbook, environmental optimization, AI decision support.</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <span class="text-green-600 mt-1"><i class="fa-solid fa-boxes-stacked"></i></span>
+                  <div>
+                    <p class="font-semibold text-gray-900">Asset Monitoring</p>
+                    <p class="text-gray-600 text-sm">RFID identity, gate tracking, compliance and loss prevention.</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <span class="text-green-600 mt-1"><i class="fa-solid fa-seedling"></i></span>
+                  <div>
+                    <p class="font-semibold text-gray-900">Crops & Greenhouses</p>
+                    <p class="text-gray-600 text-sm">Irrigation/fertigation, microclimate control, stress & ripeness insights.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right: Visual panel -->
+            <div class="relative">
+              <div class="rounded-2xl overflow-hidden shadow-2xl ring-1 ring-gray-100">
+                <img src="./images/vioneta-platform.png" alt="Vioneta Platform" class="w-full h-full object-cover" loading="lazy" />
+              </div>
+              <!-- Floating chip -->
+              <div class="absolute -bottom-6 left-6 right-6 bg-white rounded-xl shadow-lg border p-4 flex items-center gap-3">
+                <span class="text-green-600 text-xl"><i class="fa-solid fa-signal"></i></span>
+                <div class="text-sm">
+                  <p class="font-semibold text-gray-900">Edge online or offline</p>
+                  <p class="text-gray-600">Keeps logging, analyzing, and automating even without cloud.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Stats Row -->
+          <div class="grid sm:grid-cols-3 gap-6 mt-20 animate-fade-in-up animate-element" data-delay="0.2">
+            <div class="bg-white rounded-xl border p-6 text-center shadow-sm">
+              <p class="text-3xl font-extrabold text-green-700">60%+</p>
+              <p class="text-gray-600 text-sm">Water savings with smart irrigation</p>
+            </div>
+            <div class="bg-white rounded-xl border p-6 text-center shadow-sm">
+              <p class="text-3xl font-extrabold text-green-700">24/7</p>
+              <p class="text-gray-600 text-sm">Monitoring and alerting at the edge</p>
+            </div>
+            <div class="bg-white rounded-xl border p-6 text-center shadow-sm">
+              <p class="text-3xl font-extrabold text-green-700">10x</p>
+              <p class="text-gray-600 text-sm">Faster insights than manual checks</p>
+            </div>
+          </div>
+
+          <!-- Use Cases -->
+          <div class="mt-16 animate-fade-in-up animate-element" data-delay="0.3">
+            <h3 class="text-2xl font-semibold text-green-700 mb-2 text-center">Use Cases</h3>
+            <p class="text-center text-gray-700 mb-8 max-w-3xl mx-auto">The Vioneta Smart Agriculture Platform combines edge AI, computer vision, interoperable sensors (LoRa/RS485/IP), and automation to address diverse production systems – all operating reliably online or offline.</p>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
+              <!-- Vineyards & Orchards -->
+              <div class="bg-white rounded-xl border p-6 shadow-sm hover:shadow-md transition h-full flex flex-col">
+                <div class="flex items-center gap-3 mb-3">
+                  <span class="text-green-600 text-2xl"><i class="fa-solid fa-apple-whole"></i></span>
+                  <h4 class="text-lg font-bold text-gray-800">Vineyards & Orchards</h4>
+                </div>
+                <ul class="text-gray-700 text-sm space-y-1 list-disc list-inside mt-1">
+                  <li>Microclimate & leaf wetness monitoring</li>
+                  <li>AI‑driven irrigation optimization</li>
+                  <li>Vision‑based yield & ripeness insights</li>
+                </ul>
+              </div>
+
+              <!-- Arable Crops & Vegetables -->
+              <div class="bg-white rounded-xl border p-6 shadow-sm hover:shadow-md transition h-full flex flex-col">
+                <div class="flex items-center gap-3 mb-3">
+                  <span class="text-green-600 text-2xl"><i class="fa-solid fa-tractor"></i></span>
+                  <h4 class="text-lg font-bold text-gray-800">Arable Crops & Vegetables</h4>
+                </div>
+                <ul class="text-gray-700 text-sm space-y-1 list-disc list-inside mt-1">
+                  <li>Soil health & nutrient monitoring</li>
+                  <li>Automated irrigation & fertigation</li>
+                  <li>Predictive planting & harvest planning</li>
+                </ul>
+              </div>
+
+              <!-- Greenhouse Management -->
+              <div class="bg-white rounded-xl border p-6 shadow-sm hover:shadow-md transition h-full flex flex-col">
+                <div class="flex items-center gap-3 mb-3">
+                  <span class="text-green-600 text-2xl"><i class="fa-solid fa-seedling"></i></span>
+                  <h4 class="text-lg font-bold text-gray-800">Greenhouse Management</h4>
+                </div>
+                <ul class="text-gray-700 text-sm space-y-1 list-disc list-inside mt-1">
+                  <li>AI climate control (temp, humidity, CO₂)</li>
+                  <li>Smart lighting & energy optimization</li>
+                  <li>Precision fertigation & stress detection</li>
+                </ul>
+              </div>
+
+              <!-- Poultry Farms -->
+              <div class="bg-white rounded-xl border p-6 shadow-sm hover:shadow-md transition h-full flex flex-col">
+                <div class="flex items-center gap-3 mb-3">
+                  <span class="text-green-600 text-2xl"><i class="fa-solid fa-drumstick-bite"></i></span>
+                  <h4 class="text-lg font-bold text-gray-800">Poultry Farms</h4>
+                </div>
+                <ul class="text-gray-700 text-sm space-y-1 list-disc list-inside mt-1">
+                  <li>AI wellness analytics from vocalization & behavior</li>
+                  <li>Computer‑vision weight estimation</li>
+                  <li>Env. optimization and automated egg counting</li>
+                </ul>
+              </div>
+
+              <!-- Pig Production -->
+              <div class="bg-white rounded-xl border p-6 shadow-sm hover:shadow-md transition h-full flex flex-col">
+                <div class="flex items-center gap-3 mb-3">
+                  <span class="text-green-600 text-2xl"><i class="fa-solid fa-piggy-bank"></i></span>
+                  <h4 class="text-lg font-bold text-gray-800">Pig Production</h4>
+                </div>
+                <ul class="text-gray-700 text-sm space-y-1 list-disc list-inside mt-1">
+                  <li>Digital log book for operations & health</li>
+                  <li>Optimize temperature, humidity, CO₂/NH₃</li>
+                  <li>AI‑assisted decisions and early alerts</li>
+                </ul>
+              </div>
+
+              <!-- Asset Monitoring -->
+              <div class="bg-white rounded-xl border p-6 shadow-sm hover:shadow-md transition h-full flex flex-col">
+                <div class="flex items-center gap-3 mb-3">
+                  <span class="text-green-600 text-2xl"><i class="fa-solid fa-boxes-stacked"></i></span>
+                  <h4 class="text-lg font-bold text-gray-800">Asset Monitoring</h4>
+                </div>
+                <ul class="text-gray-700 text-sm space-y-1 list-disc list-inside mt-1">
+                  <li>RFID‑based identity for tools and containers</li>
+                  <li>Gate readers track flow & locations</li>
+                  <li>Process compliance and loss prevention</li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
       </section>
+      
 
-      <!-- Products Section -->
-      <section id="products" class="py-20 bg-gray-100">
-        <div class="container mx-auto px-6">
-          <h2 class="text-4xl font-bold text-center mb-12 text-gradient animate-fade-in-up animate-element">Our Products</h2>
-          <p class="text-center text-lg mb-12 max-w-3xl mx-auto text-gray-700 animate-fade-in-up animate-element" data-delay="0.2">
-            At Vioneta Agro, quality stands as the cornerstone of our product philosophy. We engineer each component of our agricultural solutions with an unwavering commitment to excellence, ensuring robustness, reliability, and resilience in every facet of our technology. Our products are meticulously crafted to thrive in the demanding conditions of agricultural settings, guaranteeing uninterrupted performance even in the most challenging scenarios.
-          </p>
-
-          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-            <div class="bg-white p-8 rounded-lg shadow-lg card-hover-effect animate-fade-in-up animate-element" data-delay="0.4">
-              <div class="text-green-500 text-5xl mb-4"><i class="fas fa-cogs"></i></div>
-              <h3 class="text-2xl font-semibold mb-4">Vioneta Agro Automation Controller</h3>
-              <p class="text-gray-600">An executor of predefined automation tasks configured by the Vioneta Agro Edge Computer. It executes specific agricultural automation sequences and tasks orchestrated by the Edge Computer, contributing to enhanced operational efficiency.</p>
-            </div>
-            <div class="bg-white p-8 rounded-lg shadow-lg card-hover-effect animate-fade-in-up animate-element" data-delay="0.5">
-              <div class="text-green-500 text-5xl mb-4"><i class="fas fa-desktop"></i></div>
-              <h3 class="text-2xl font-semibold mb-4">Vioneta Agro Edge Computer</h3>
-              <p class="text-600">Equipped with Vioneta Agro OS, the Edge Computer serves as the central hub, managing multiple Automation Controllers. It orchestrates automation processes, coordinates tasks, and communicates with interconnected devices and sensors across the agricultural infrastructure.</p>
-            </div>
-            <div class="bg-white p-8 rounded-lg shadow-lg card-hover-effect animate-fade-in-up animate-element" data-delay="0.6">
-              <div class="text-green-500 text-5xl mb-4"><i class="fas fa-signal"></i></div>
-              <h3 class="text-2xl font-semibold mb-4">Vioneta Agro LoRa Gateway</h3>
-              <p class="text-gray-600">Acts as a central hub, enabling LoRa-based communication between the Edge Computer and interconnected hardware components, sensors, and Automation Controllers.</p>
-            </div>
-            <div class="bg-white p-8 rounded-lg shadow-lg card-hover-effect animate-fade-in-up animate-element" data-delay="0.7">
-              <div class="text-green-500 text-5xl mb-4"><i class="fas fa-cloud"></i></div>
-              <h3 class="text-2xl font-semibold mb-4">Vioneta Agro Cloud</h3>
-              <p class="text-gray-600">A cloud-based service allowing secure remote access to the Edge Computer from anywhere, providing monitoring, data analysis, configuration, and control functionalities.</p>
-            </div>
-            <div class="bg-white p-8 rounded-lg shadow-lg card-hover-effect animate-fade-in-up animate-element" data-delay="0.8">
-              <div class="text-green-500 text-5xl mb-4"><i class="fas fa-store"></i></div>
-              <h3 class="text-2xl font-semibold mb-4">Vioneta Agro App Store</h3>
-              <p class="text-gray-600">The Vioneta Agro App Store stands as a comprehensive repository comprising dockerized applications. It serves as an invaluable resource to enhance and extend the capabilities of the Vioneta Agro ecosystem.</p>
-            </div>
-            <div class="bg-white p-8 rounded-lg shadow-lg card-hover-effect animate-fade-in-up animate-element" data-delay="0.9">
-              <div class="text-green-500 text-5xl mb-4"><i class="fab fa-android"></i></div>
-              <h3 class="text-2xl font-semibold mb-4">Vioneta Agro Mobile App</h3>
-              <p class="text-gray-600">An application enabling users to access and manage the Edge Computer locally or remotely. It offers a user-friendly interface for monitoring, control, and data analysis.</p>
-            </div>
-            <div class="bg-white p-8 rounded-lg shadow-lg card-hover-effect animate-fade-in-up animate-element" data-delay="1.0">
-              <div class="text-green-500 text-5xl mb-4"><i class="fas fa-brain"></i></div>
-              <h3 class="text-2xl font-semibold mb-4">Vinsight</h3>
-              <p class="text-gray-600">Advanced Machine Learning, Data analytics and reporting engine for predictive insights and trend reports.</p>
-            </div>
-            <div class="bg-white p-8 rounded-lg shadow-lg card-hover-effect animate-fade-in-up animate-element" data-delay="1.1">
-              <div class="text-green-500 text-5xl mb-4"><i class="fas fa-video"></i></div>
-              <h3 class="text-2xl font-semibold mb-4">Vcam</h3>
-              <p class="text-gray-600">AI-driven video analysis system to detect specific events like animal intrusions.</p>
-            </div>
-            <div class="bg-white p-8 rounded-lg shadow-lg card-hover-effect animate-fade-in-up animate-element" data-delay="1.3">
-              <div class="text-green-500 text-5xl mb-4"><i class="fas fa-robot"></i></div>
-              <h3 class="text-2xl font-semibold mb-4">Vassist</h3>
-              <p class="text-gray-600">AI Driven Interactive assistant for decision support, allowing voice commands or text inputs to control devices and trigger automations.</p>
-            </div>
-          </div>
-        </div>
-      </section>
 
       <!-- Services Section -->
-      <section id="services" class="py-20 bg-white">
+      <section id="services" class="py-20 bg-gray-50">
         <div class="container mx-auto px-6">
-          <h2 class="text-4xl font-bold text-center mb-12 text-gradient animate-fade-in-up animate-element">Our Services</h2>
+          <h2 class="text-4xl font-bold text-center mb-4 text-gradient animate-fade-in-up animate-element">Our Services</h2>
           <p class="text-center text-lg mb-12 max-w-3xl mx-auto text-gray-700 animate-fade-in-up animate-element" data-delay="0.2">
-            At Vioneta, we are dedicated to being a trusted partner on the journey towards modern and sustainable agriculture. Our commitment is to empower farmers with transformative technologies and expert guidance to drive efficiency, profitability, and environmental stewardship in farming practices.
+            Technology, expertise, and partnership to accelerate smart agriculture adoption.
           </p>
 
-          <div class="grid md:grid-cols-2 gap-10">
-            <div class="bg-gray-50 p-8 rounded-lg shadow-lg card-hover-effect animate-fade-in-up animate-element" data-delay="0.3">
-              <div class="text-green-500 text-5xl flex-shrink-0"><i class="fas fa-leaf"></i></div>
-              <div>
-                <h3 class="text-2xl font-semibold mb-3">Smart Agriculture Solutions</h3>
-                <p class="text-gray-600">We are committed to delivering comprehensive smart agriculture solutions tailored to meet the diverse needs of our customers.</p>
-              </div>
+          <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 animate-fade-in-up animate-element">
+            <div class="bg-white rounded-xl border p-6 text-center shadow-sm hover:shadow-md transition">
+              <div class="text-green-600 text-4xl mb-3"><i class="fa-solid fa-leaf"></i></div>
+              <h3 class="text-xl font-semibold mb-2">Smart Solutions</h3>
+              <p class="text-gray-600 text-sm">End-to-end deployments for sensing, control, and automation.</p>
             </div>
-            <div class="bg-gray-50 p-8 rounded-lg shadow-lg card-hover-effect flex items-start space-x-6 animate-fade-in-up animate-element" data-delay="0.4">
-              <div class="text-green-500 text-5xl flex-shrink-0"><i class="fas fa-user-tie"></i></div>
-              <div>
-                <h3 class="text-2xl font-semibold mb-3">Consultation & Training</h3>
-                <p class="text-gray-600">Our expert team provides consultative services, collaborating closely with customers to understand their specific requirements and challenges. We also offer comprehensive training and ongoing support.</p>
-              </div>
+            <div class="bg-white rounded-xl border p-6 text-center shadow-sm hover:shadow-md transition">
+              <div class="text-green-600 text-4xl mb-3"><i class="fa-solid fa-user-tie"></i></div>
+              <h3 class="text-xl font-semibold mb-2">Consulting</h3>
+              <p class="text-gray-600 text-sm">On‑farm assessments, systems design, and integration support.</p>
             </div>
-            <div class="bg-gray-50 p-8 rounded-lg shadow-lg card-hover-effect flex items-start space-x-6 animate-fade-in-up animate-element" data-delay="0.5">
-              <div class="text-green-500 text-5xl flex-shrink-0"><i class="fas fa-handshake"></i></div>
-              <div>
-                <h3 class="text-2xl font-semibold mb-3">Community & Collaboration</h3>
-                <p class="text-gray-600">Join a community of like-minded farmers and share best practices and insights. We also work with you to refine and improve our technology based on your feedback.</p>
-              </div>
+            <div class="bg-white rounded-xl border p-6 text-center shadow-sm hover:shadow-md transition">
+              <div class="text-green-600 text-4xl mb-3"><i class="fa-solid fa-chalkboard"></i></div>
+              <h3 class="text-xl font-semibold mb-2">Training</h3>
+              <p class="text-gray-600 text-sm">Hands‑on workshops and continuous learning with Academy.</p>
             </div>
-            <div class="bg-gray-50 p-8 rounded-lg shadow-lg card-hover-effect flex items-start space-x-6 animate-fade-in-up animate-element" data-delay="0.6">
-              <div class="text-green-500 text-5xl flex-shrink-0"><i class="fas fa-seedling"></i></div>
-              <div>
-                <h3 class="text-2xl font-semibold mb-3">Sustainability Focus</h3>
-                <p class="text-gray-600">Implement sustainable farming practices that benefit the environment and use technology to minimize water, chemical, and energy usage.</p>
-              </div>
+            <div class="bg-white rounded-xl border p-6 text-center shadow-sm hover:shadow-md transition">
+              <div class="text-green-600 text-4xl mb-3"><i class="fa-solid fa-handshake"></i></div>
+              <h3 class="text-xl font-semibold mb-2">Collaboration</h3>
+              <p class="text-gray-600 text-sm">Co‑creation with growers to iterate and improve outcomes.</p>
             </div>
           </div>
         </div>
       </section>
 
       <!-- About Us Section -->
-      <section id="about" class="py-20 bg-gray-100">
+      <section id="about" class="py-20 bg-white">
         <div class="container mx-auto px-6">
           <h2 class="text-4xl font-bold text-center mb-12 text-gradient animate-fade-in-up animate-element">About Us</h2>
-          <div class="flex flex-col lg:flex-row items-center gap-12">
-            <div class="lg:w-1/2 animate-fade-in-up animate-element" data-delay="0.2">
-              <img src="./images/about.png" alt="About Vioneta" class="rounded-lg shadow-xl" />
+          <div class="grid lg:grid-cols-2 gap-12 items-center animate-fade-in-up animate-element">
+            <div class="order-2 lg:order-1 space-y-6">
+              <h3 class="text-3xl font-semibold text-gray-900">Building the future of sustainable farming</h3>
+              <p class="text-lg text-gray-700">We are a multidisciplinary team focused on practical innovation for growers. Our platform blends IoT, edge AI, and automation to deliver measurable gains in productivity and resource efficiency.</p>
+              <ul class="space-y-2">
+                <li class="flex items-start gap-3"><span class="text-green-600 mt-1"><i class="fa-solid fa-check-circle"></i></span><span>Edge‑first architecture for reliability and speed</span></li>
+                <li class="flex items-start gap-3"><span class="text-green-600 mt-1"><i class="fa-solid fa-check-circle"></i></span><span>Interoperable with a wide range of sensors and devices</span></li>
+                <li class="flex items-start gap-3"><span class="text-green-600 mt-1"><i class="fa-solid fa-check-circle"></i></span><span>Guided adoption through Vioneta Academy and services</span></li>
+              </ul>
             </div>
-            <div class="lg:w-1/2 space-y-6 animate-fade-in-up animate-element" data-delay="0.4">
-              <h3 class="text-3xl font-semibold text-green-700">Our Company</h3>
-              <p class="text-lg text-gray-700">
-                Vioneta pioneers transformative solutions at the intersection of technology and agriculture. With a passion for innovation and a commitment to sustainable farming practices, we specialize in delivering cutting-edge smart agriculture solutions.
-              </p>
-              <p class="text-lg text-gray-700">
-                Our mission is to revolutionize the agricultural landscape by harnessing the power of technology to address the challenges faced by farmers worldwide. Through our expertise in IoT, data analytics, edge computing, and automation, we offer a comprehensive suite of solutions tailored to optimize farming operations, increase productivity, and promote environmental stewardship.
-              </p>
-              <p class="text-lg text-gray-700">
-                Beyond innovative technology, our core values center around customer success and partnership. We prioritize understanding the unique needs of each farmer or agricultural enterprise, collaborating closely to deliver customized solutions and provide expert consultancy services. Our goal is to empower our clients with the tools, insights, and support necessary to thrive in an ever-evolving agricultural ecosystem.
-              </p>
+            <div class="order-1 lg:order-2">
+              <div class="rounded-2xl overflow-hidden shadow-2xl ring-1 ring-gray-100">
+                <img src="./images/about.png" alt="About Vioneta" class="w-full h-full object-cover" loading="lazy" />
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Our Vision Section (Combines Problem, Market, SWOT) -->
-      <section id="our-vision" class="py-20 bg-gray-100">
-        <div class="container mx-auto px-6">
-          <h2 class="text-4xl font-bold text-center mb-12 text-gradient animate-fade-in-up animate-element">Our Vision</h2>
-          <p class="text-center text-lg mb-12 max-w-3xl mx-auto text-gray-700 animate-fade-in-up animate-element" data-delay="0.2">
-            At Vioneta, we recognize the critical challenges facing modern agriculture and the immense opportunities within the rapidly growing Agritech market. Our vision is to empower farmers globally, driving sustainable growth and ensuring food security through innovative technology.
-          </p>
-
-          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-            <!-- Problem Summary -->
-            <div class="bg-white p-8 rounded-lg shadow-lg card-hover-effect animate-fade-in-up animate-element" data-delay="0.3">
-              <div class="text-green-500 text-5xl mb-4"><i class="fas fa-exclamation-circle"></i></div>
-              <h3 class="text-2xl font-semibold mb-4">Addressing Key Challenges</h3>
-              <ul class="list-disc list-inside text-gray-600 space-y-2">
-                <li>Outdated farming methods & lack of actionable data.</li>
-                <li>Unreliable internet connectivity in rural areas.</li>
-                <li>Inefficient resource usage (water, fertilizers, chemicals).</li>
-                <li>Significant knowledge gap in agri-tech adoption.</li>
-                <li>Need for affordable, offline-capable intelligent systems.</li>
-              </ul>
-            </div>
-
-            <!-- Market Opportunity Summary -->
-            <div class="bg-white p-8 rounded-lg shadow-lg card-hover-effect animate-fade-in-up animate-element" data-delay="0.5">
-              <div class="text-green-500 text-5xl mb-4"><i class="fas fa-chart-line"></i></div>
-              <h3 class="text-2xl font-semibold mb-4">Seizing Market Opportunities</h3>
-              <ul class="list-disc list-inside text-gray-600 space-y-2">
-                <li>Global Agritech market valued at $24.5B (2023).</li>
-                <li>Expected to reach $49.5B by 2031 (12.33% CAGR).</li>
-                <li>New Zealand Agritech target: $4.8B revenue by 2030.</li>
-                <li>Growing global population demands increased food supply.</li>
-              </ul>
-            </div>
-
-            <!-- Strengths & Opportunities -->
-            <div class="bg-white p-8 rounded-lg shadow-lg card-hover-effect animate-fade-in-up animate-element" data-delay="0.7">
-              <div class="text-green-500 text-5xl mb-4"><i class="fas fa-seedling"></i></div>
-              <h3 class="text-2xl font-semibold mb-4">Our Core Strengths & Opportunities</h3>
-              <ul class="list-disc list-inside text-gray-600 space-y-2">
-                <li>Sustainable, easy-to-use, and affordable solutions.</li>
-                <li>Pioneering edge computing for offline insights.</li>
-                <li>Integrated ecosystem and data-driven analytics.</li>
-                <li>Commitment to inclusivity for all farmers.</li>
-                <li>Opportunity to feed a growing global population.</li>
-              </ul>
-            </div>
-
-          </div>
-        </div>
-      </section>
 
       <!-- Team Section -->
-      <section id="team" class="py-20 bg-gray-100">
+      <section id="team" class="py-20 bg-gray-50">
         <div class="container mx-auto px-6">
           <h2 class="text-4xl font-bold text-center mb-12 text-gradient animate-fade-in-up animate-element">Our Team</h2>
-          <p class="text-center text-lg mb-12 max-w-3xl mx-auto text-gray-700 animate-fade-in-up animate-element" data-delay="0.2">
-            Meet our dedicated team who drive the vision of Vioneta.
-          </p>
+          <p class="text-center text-lg mb-12 max-w-3xl mx-auto text-gray-700 animate-fade-in-up animate-element" data-delay="0.2">Meet the people shaping the platform and partnering with growers.</p>
 
-          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             <!-- Isuru Akalanka -->
-            <div class="bg-white p-8 rounded-lg shadow-lg text-center card-hover-effect animate-fade-in-up animate-element" data-delay="0.3">
+            <div class="bg-white p-8 rounded-xl border shadow-sm text-center card-hover-effect animate-fade-in-up animate-element" data-delay="0.3">
               <img src="./images/team/01.png" alt="Isuru Akalanka" class="rounded-full mx-auto mb-6 w-36 h-36 object-cover border-4 border-green-500" />
               <h3 class="text-2xl font-semibold mb-2">Isuru Akalanka</h3>
               <p class="text-green-700 font-medium mb-4">Chief Executive Officer (CEO)</p>
@@ -389,7 +458,7 @@
               </a>
             </div>
             <!-- Charith Madhuranga -->
-            <div class="bg-white p-8 rounded-lg shadow-lg text-center card-hover-effect animate-fade-in-up animate-element" data-delay="0.4">
+            <div class="bg-white p-8 rounded-xl border shadow-sm text-center card-hover-effect animate-fade-in-up animate-element" data-delay="0.4">
               <img src="./images/team/02.png" alt="Charith Madhuranga" class="rounded-full mx-auto mb-6 w-36 h-36 object-cover border-4 border-green-500" />
               <h3 class="text-2xl font-semibold mb-2">Charith Madhuranga</h3>
               <p class="text-green-700 font-medium mb-4">Chief Technology Officer (CTO)</p>
@@ -399,7 +468,7 @@
               </a>
             </div>
             <!-- Wageesha Mallehe -->
-            <div class="bg-white p-8 rounded-lg shadow-lg text-center card-hover-effect animate-fade-in-up animate-element" data-delay="0.6">
+            <div class="bg-white p-8 rounded-xl border shadow-sm text-center card-hover-effect animate-fade-in-up animate-element" data-delay="0.6">
               <img src="./images/team/05.png" alt="Wageesha Mallehe" class="rounded-full mx-auto mb-6 w-36 h-36 object-cover border-4 border-green-500" />
               <h3 class="text-2xl font-semibold mb-2">Wageesha Mallehe</h3>
               <p class="text-green-700 font-medium mb-4">Chief Operating Officer (COO)</p>
@@ -409,7 +478,7 @@
               </a>
             </div>
                         <!-- Nipuna Dhananjaya -->
-            <div class="bg-white p-8 rounded-lg shadow-lg text-center card-hover-effect animate-fade-in-up animate-element" data-delay="0.5">
+            <div class="bg-white p-8 rounded-xl border shadow-sm text-center card-hover-effect animate-fade-in-up animate-element" data-delay="0.5">
               <img src="./images/team/04.png" alt="Nipuna Dhananjaya" class="rounded-full mx-auto mb-6 w-36 h-36 object-cover border-4 border-green-500" />
               <h3 class="text-2xl font-semibold mb-2">Nipuna Dhananjaya</h3>
               <p class="text-green-700 font-medium mb-4">Chief Marketing Officer (CMO)</p>
@@ -419,7 +488,7 @@
               </a>
             </div>
             <!-- Jacob Kambuta -->
-            <div class="bg-white p-8 rounded-lg shadow-lg text-center card-hover-effect animate-fade-in-up animate-element" data-delay="0.7">
+            <div class="bg-white p-8 rounded-xl border shadow-sm text-center card-hover-effect animate-fade-in-up animate-element" data-delay="0.7">
               <img src="./images/team/06.png" alt="Jacob Kambuta" class="rounded-full mx-auto mb-6 w-36 h-36 object-cover border-4 border-green-500" />
               <h3 class="text-2xl font-semibold mb-2">Jacob Kambuta</h3>
               <p class="text-green-700 font-medium mb-4">Director of Agriculture</p>
@@ -429,7 +498,7 @@
               </a>
             </div>
             <!-- Sunil Wijesundara -->
-            <div class="bg-white p-8 rounded-lg shadow-lg text-center card-hover-effect animate-fade-in-up animate-element" data-delay="0.8">
+            <div class="bg-white p-8 rounded-xl border shadow-sm text-center card-hover-effect animate-fade-in-up animate-element" data-delay="0.8">
               <img src="./images/team/03.png" alt="Sunil Wijesundara" class="rounded-full mx-auto mb-6 w-36 h-36 object-cover border-4 border-green-500" />
               <h3 class="text-2xl font-semibold mb-2">Sunil Wijesundara</h3>
               <p class="text-green-700 font-medium mb-4">Early Investor & Advisor</p>
@@ -445,13 +514,11 @@
       <!-- Contact Us Section -->
       <section id="contact" class="py-20 bg-white">
         <div class="container mx-auto px-6">
-          <h2 class="text-4xl font-bold text-center mb-12 text-gradient animate-fade-in-up animate-element">Contact Us</h2>
-          <p class="text-center text-lg mb-12 max-w-3xl mx-auto text-gray-700 animate-fade-in-up animate-element" data-delay="0.2">
-            We're here to help you explore innovative agricultural solutions tailored to your needs. Whether you have questions about our smart agriculture products, need consultancy services, or wish to collaborate on transformative agricultural projects, our team is ready to assist.
-          </p>
+          <h2 class="text-4xl font-bold text-center mb-4 text-gradient animate-fade-in-up animate-element">Contact Us</h2>
+          <p class="text-center text-lg mb-12 max-w-3xl mx-auto text-gray-700 animate-fade-in-up animate-element" data-delay="0.2">We’re here to help you plan, deploy, and scale smart agriculture.</p>
 
-          <div class="grid md:grid-cols-2 gap-12">
-            <div class="bg-gray-50 p-8 rounded-lg shadow-lg animate-fade-in-up animate-element" data-delay="0.3">
+          <div class="grid md:grid-cols-2 gap-8 animate-fade-in-up animate-element">
+            <div class="bg-gray-50 p-8 rounded-xl border shadow-sm animate-fade-in-up animate-element" data-delay="0.3">
               <h3 class="text-2xl font-semibold mb-6 text-green-700">Contact Info</h3>
               <address class="not-italic text-gray-700 space-y-2">
                 <p><strong>Vioneta Ltd,</strong></p>
@@ -463,7 +530,7 @@
                 <p><i class="fas fa-envelope text-green-500 mr-2"></i> Email: admin@vioneta.com</p>
               </address>
             </div>
-            <div class="bg-gray-50 p-8 rounded-lg shadow-lg animate-fade-in-up animate-element" data-delay="0.4">
+            <div class="bg-gray-50 p-8 rounded-xl border shadow-sm animate-fade-in-up animate-element" data-delay="0.4">
               <h3 class="text-2xl font-semibold mb-6 text-green-700">Send Us a Message</h3>
               <form id="contact-form" action="https://formspree.io/f/mzzgqwbp" method="POST" class="space-y-6">
                 <input type="hidden" name="_subject" value="New Contact Form Submission from Vioneta Website">
@@ -518,13 +585,14 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-10">
-      <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
-        <div class="mb-4 md:mb-0">
-          <p>&copy; 2023-2025 Vioneta Limited. All rights reserved.</p>
-        </div>
+    <footer class="bg-gray-900 text-white py-12">
+      <div class="container mx-auto px-6 grid md:grid-cols-2 gap-8 items-center">
         <div>
-          <ul class="flex space-x-6">
+          <p class="text-lg font-semibold">Vioneta</p>
+          <p class="text-gray-400 mt-1">Harvesting Tomorrow's Agriculture</p>
+        </div>
+        <div class="md:text-right">
+          <ul class="inline-flex space-x-6">
             <li>
               <a href="#" class="text-gray-400 hover:text-white transition duration-300"><i class="fab fa-facebook-f text-xl"></i></a>
             </li>
@@ -541,6 +609,7 @@
               <a href="https://github.com/Vioneta" target="_blank" class="text-gray-400 hover:text-white transition duration-300"><i class="fab fa-github text-xl"></i></a>
             </li>
           </ul>
+          <p class="text-gray-500 text-sm mt-4">&copy; 2023-2025 Vioneta Limited. All rights reserved.</p>
         </div>
       </div>
     </footer>
