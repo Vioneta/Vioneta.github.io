@@ -225,9 +225,9 @@
                   <div>
                     <p class="font-semibold text-gray-900">Deployable Modules</p>
                     <p class="text-gray-600 text-sm">Containerized apps tailored for vineyards, greenhouses, poultry, pigs, and assets.</p>
-                  </div>
-                </div>
-              </div>
+            </div>
+          </div>
+        </div>
 
               <!-- Tailored modules reflecting user cases -->
               <div class="grid sm:grid-cols-2 gap-4 pt-4">
@@ -362,26 +362,69 @@
                   <li>Optimize temperature, humidity, CO₂/NH₃</li>
                   <li>AI‑assisted decisions and early alerts</li>
                 </ul>
-              </div>
+            </div>
 
               <!-- Asset Monitoring -->
               <div class="bg-white rounded-xl border p-6 shadow-sm hover:shadow-md transition h-full flex flex-col">
                 <div class="flex items-center gap-3 mb-3">
                   <span class="text-green-600 text-2xl"><i class="fa-solid fa-boxes-stacked"></i></span>
                   <h4 class="text-lg font-bold text-gray-800">Asset Monitoring</h4>
-                </div>
+            </div>
                 <ul class="text-gray-700 text-sm space-y-1 list-disc list-inside mt-1">
                   <li>RFID‑based identity for tools and containers</li>
                   <li>Gate readers track flow & locations</li>
                   <li>Process compliance and loss prevention</li>
                 </ul>
-              </div>
+            </div>
             </div>
           </div>
         </div>
       </section>
       
 
+
+      <!-- Technology Gallery Section -->
+      <section id="gallery" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+          <h2 class="text-4xl font-bold text-center mb-4 text-gradient animate-fade-in-up animate-element">Technology Gallery</h2>
+          <p class="text-center text-lg mb-12 max-w-3xl mx-auto text-gray-700 animate-fade-in-up animate-element" data-delay="0.2">Snapshots of Vioneta technology in the field: sensing, automation, and edge AI in action.</p>
+
+          <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 animate-fade-in-up animate-element">
+            <button class="group relative overflow-hidden rounded-xl shadow-md focus:outline-none" data-gallery-src="./images/projects/zambia.png" aria-label="Open image 01">
+              <img src="./images/projects/zambia.png" alt="Project 01" class="w-full h-56 object-cover transform group-hover:scale-105 transition duration-300" loading="lazy" />
+            </button>
+            <button class="group relative overflow-hidden rounded-xl shadow-md focus:outline-none" data-gallery-src="./images/projects/greenhouse-hydroponics.jpeg" aria-label="Open image 02">
+              <img src="./images/projects/greenhouse-hydroponics.jpeg" alt="Project 02" class="w-full h-56 object-cover transform group-hover:scale-105 transition duration-300" loading="lazy" />
+            </button>
+            <button class="group relative overflow-hidden rounded-xl shadow-md focus:outline-none" data-gallery-src="./images/projects/indoor-hydroponics.jpeg" aria-label="Open image 03">
+              <img src="./images/projects/indoor-hydroponics.jpeg" alt="Project 03" class="w-full h-56 object-cover transform group-hover:scale-105 transition duration-300" loading="lazy" />
+            </button>
+            <button class="group relative overflow-hidden rounded-xl shadow-md focus:outline-none" data-gallery-src="./images/projects/indoor-hydroponics-2.jpeg" aria-label="Open image 04">
+              <img src="./images/projects/indoor-hydroponics-2.jpeg" alt="Project 04" class="w-full h-56 object-cover transform group-hover:scale-105 transition duration-300" loading="lazy" />
+            </button>
+            <button class="group relative overflow-hidden rounded-xl shadow-md focus:outline-none" data-gallery-src="./images/projects/indoor-hydroponics-3.jpeg" aria-label="Open image 05">
+              <img src="./images/projects/indoor-hydroponics-3.jpeg" alt="Project 05" class="w-full h-56 object-cover transform group-hover:scale-105 transition duration-300" loading="lazy" />
+            </button>
+            <button class="group relative overflow-hidden rounded-xl shadow-md focus:outline-none" data-gallery-src="./images/projects/vioneta-greenhouse-sensor-kit.webp" aria-label="Open image 06">
+              <img src="./images/projects/vioneta-greenhouse-sensor-kit.webp" alt="Project 06" class="w-full h-56 object-cover transform group-hover:scale-105 transition duration-300" loading="lazy" />
+            </button>
+            <button class="group relative overflow-hidden rounded-xl shadow-md focus:outline-none" data-gallery-src="./images/projects/poultry-monitor.png" aria-label="Open image 07">
+              <img src="./images/projects/poultry-monitor.png" alt="Project 07" class="w-full h-56 object-cover transform group-hover:scale-105 transition duration-300" loading="lazy" />
+            </button>
+            <button class="group relative overflow-hidden rounded-xl shadow-md focus:outline-none" data-gallery-src="./images/projects/pig-monitor.png" aria-label="Open image 08">
+              <img src="./images/projects/pig-monitor.png" alt="Project 08" class="w-full h-56 object-cover transform group-hover:scale-105 transition duration-300" loading="lazy" />
+            </button>
+          </div>
+        </div>
+
+        <!-- Lightbox Modal -->
+        <div id="gallery-lightbox" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 p-4">
+          <button id="gallery-close" class="absolute top-4 right-4 text-white bg-white/10 hover:bg-white/20 rounded-full p-3 focus:outline-none" aria-label="Close gallery">
+            <i class="fas fa-times text-2xl"></i>
+          </button>
+          <img id="gallery-image" src="" alt="Gallery image" class="max-h-[85vh] max-w-[90vw] rounded-lg shadow-2xl" />
+        </div>
+      </section>
 
       <!-- Services Section -->
       <section id="services" class="py-20 bg-gray-50">
@@ -433,7 +476,7 @@
             <div class="order-1 lg:order-2">
               <div class="rounded-2xl overflow-hidden shadow-2xl ring-1 ring-gray-100">
                 <img src="./images/about.png" alt="About Vioneta" class="w-full h-full object-cover" loading="lazy" />
-              </div>
+            </div>
             </div>
           </div>
         </div>
@@ -741,6 +784,37 @@
         direction: 'alternate',
         delay: anime.stagger(100)
       });
+
+      // Simple lightbox for Technology Gallery
+      (function() {
+        const lightbox = document.getElementById('gallery-lightbox');
+        const lightboxImage = document.getElementById('gallery-image');
+        const closeBtn = document.getElementById('gallery-close');
+        const triggers = document.querySelectorAll('[data-gallery-src]');
+
+        function openLightbox(src) {
+          lightboxImage.src = src;
+          lightbox.classList.remove('hidden');
+          lightbox.classList.add('flex');
+        }
+
+        function closeLightbox() {
+          lightbox.classList.add('hidden');
+          lightbox.classList.remove('flex');
+          lightboxImage.src = '';
+        }
+
+        triggers.forEach((btn) => {
+          btn.addEventListener('click', () => openLightbox(btn.getAttribute('data-gallery-src')));
+        });
+        closeBtn.addEventListener('click', closeLightbox);
+        lightbox.addEventListener('click', (e) => {
+          if (e.target === lightbox) closeLightbox();
+        });
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') closeLightbox();
+        });
+      })();
 
       // Simple form submission handling (client-client only)
       document.getElementById('contact-form').addEventListener('submit', function(e) {
