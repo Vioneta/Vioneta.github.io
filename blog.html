@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title id="page-title">Blog Post | Vioneta</title>
+    <link rel="icon" href="./images/favicon.png" type="image/png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script> <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+        /* FIX: Add top padding to body to compensate for the fixed header */
+        padding-top: 90px; 
+      }
+      .text-gradient {
+        background: linear-gradient(45deg, #a8e063, #56ab2f);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      
+      /* --- FIX: Full Heading Support (H1-H4) Sizing, Boldness, and Spacing --- */
+      
+      /* Ensure that the content container looks like well-formatted text from Markdown */
+      #post-content p {
+        margin-bottom: 1.5rem;
+        line-height: 1.75;
+        color: #374151; /* Darker gray for better readability */
+      }
+
+      /* H1 Styling (Used for main title, but included for completeness if used in content) */
+      #post-content h1 {
+        margin-top: 3.5rem; /* Large space above H1 */
+        margin-bottom: 2rem; /* Large space below H1 */
+        font-weight: 900; /* Extra heavy bold */
+        color: #111827; /* Near black */
+        font-size: 3rem; /* Very large font size (e.g., text-5xl equivalent) */
+        line-height: 1.1;
+      }
+
+      /* H2 Styling */
+      #post-content h2 {
+        margin-top: 3rem; /* Increased space above H2 */
+        margin-bottom: 1.5rem; /* Space below H2 */
+        font-weight: 800; /* Extra bold */
+        color: #111827; /* Near black */
+        font-size: 2.25rem; /* Large font size (e.g., text-4xl equivalent) */
+        line-height: 1.2;
+      }
+
+      /* H3 Styling */
+      #post-content h3 {
+        margin-top: 2rem; /* Consistent space above H3 */
+        margin-bottom: 1rem; /* Space below H3 */
+        font-weight: 700; /* Bold */
+        color: #1f2937; /* Dark gray */
+        font-size: 1.75rem; /* Medium-large font size (e.g., text-3xl equivalent) */
+        line-height: 1.375;
+      }
+      
+      /* H4 Styling */
+      #post-content h4 {
+        margin-top: 1.5rem; /* Smaller space above H4 */
+        margin-bottom: 0.75rem; /* Smaller space below H4 */
+        font-weight: 600; /* Semi-bold */
+        color: #374151; /* Gray-700 */
+        font-size: 1.25rem; /* Standard font size (e.g., text-xl equivalent) */
+        line-height: 1.5;
+      }
+      
+      /* List Styling */
+      #post-content ul, #post-content ol {
+        margin-bottom: 1.5rem;
+        padding-left: 1.5rem;
+      }
+      #post-content ul li { list-style-type: disc; margin-bottom: 0.5rem; }
+      #post-content ol li { list-style-type: decimal; margin-bottom: 0.5rem; }
+
+      /* Code/Links within rich text should stand out slightly */
+      #post-content a {
+          color: #10b981; /* Tailwind Green-500 */
+          text-decoration: underline;
+      }
+
+      /* Style for markdown images */
+      #post-content img {
+        max-width: 100%;
+        height: auto;
+        margin: 2rem 0;
+        border-radius: 0.75rem; /* rounded-xl */
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+      }
+      /* Custom style for the quote component */
+      .strapi-quote {
+        border-left: 4px solid #4ade80; /* Green-400 */
+        padding: 1rem 1.5rem;
+        background-color: #f0fdf4; /* Green-50 */
+        margin: 2rem 0;
+        border-radius: 0.25rem;
+      }
+      .strapi-quote-body {
+        font-style: italic;
+        font-size: 1.125rem; /* text-lg */
+        color: #166534; /* Green-800 */
+        margin-bottom: 0.5rem;
+      }
+      .strapi-quote-title {
+        font-weight: 600;
+        color: #4b5563; /* Gray-600 */
+        font-size: 0.875rem;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50 text-gray-800">
+    
+    <header class="bg-white shadow-md fixed w-full z-50 border-b border-gray-100 top-0">
+        <nav class="container mx-auto px-6 py-5 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold text-green-700"><img src="./images/vioneta.png" height="50px" width="150px" alt="Vioneta Logo"/></a>
+            <a href="index.html#blog" class="text-gray-600 hover:text-green-700 font-medium transition duration-300">
+                <i class="fas fa-arrow-left mr-2"></i> Back to Blog
+            </a>
+        </nav>
+    </header>
+
+    <main class="py-16">
+      <div class="container mx-auto px-6 max-w-4xl">
+        <div id="loading-spinner" class="text-center py-20">
+            <i class="fas fa-spinner fa-spin text-4xl text-green-600"></i>
+            <p class="mt-4 text-gray-600">Fetching blog post content...</p>
+        </div>
+
+        <div id="error-message" class="hidden text-center py-20 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative">
+            <p class="font-bold">Error Loading Post</p>
+            <p id="error-text" class="text-sm">The requested blog post could not be found or there was a network error.</p>
+            <a href="index.html#blog" class="mt-4 inline-block text-sm text-red-700 underline hover:text-red-900">Return to blog list</a>
+        </div>
+
+        <article id="post-container" class="hidden bg-white p-8 md:p-12 rounded-xl shadow-lg">
+            <div id="cover-image-container" class="mb-8 rounded-xl overflow-hidden shadow-md">
+              <img id="post-cover-image" src="" alt="Post Cover" class="w-full h-auto object-cover max-h-96" />
+            </div>
+
+            <h1 id="post-title" class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 leading-tight"></h1>
+            
+            <p id="post-description" class="text-xl text-gray-700 mb-6 border-b pb-4"></p>
+            <div class="flex items-center text-sm text-gray-500 mb-8">
+                <i class="far fa-calendar-alt mr-2"></i>
+                <span id="post-date"></span>
+            </div>
+
+            <div id="post-content" class="text-gray-800 prose prose-green max-w-none">
+                </div>
+            
+            <a href="index.html#blog" class="mt-12 inline-block bg-green-600 text-white py-3 px-6 rounded-md font-semibold hover:bg-green-700 transition duration-300 shadow-md">
+                <i class="fas fa-arrow-left mr-2"></i> View All Posts
+            </a>
+        </article>
+      </div>
+    </main>
+    
+    <footer class="bg-gray-900 text-white py-6 mt-12">
+      <div class="container mx-auto px-6 text-center">
+        <p class="text-gray-500 text-sm">&copy; 2023-2025 Vioneta Limited. <a href="index.html" class="underline hover:text-white">Back to Home</a></p>
+      </div>
+    </footer>
+
+
+    <script>
+      // *** IMPORTANT: Updated URL to the actual Strapi API endpoint provided ***
+      const BLOG_API_BASE_URL = 'https://light-passion-0075355c6e.strapiapp.com/api/articles'; 
+
+      const postContainer = document.getElementById('post-container');
+      const loadingSpinner = document.getElementById('loading-spinner');
+      const errorMessage = document.getElementById('error-message');
+      const errorText = document.getElementById('error-text');
+      const postContentDiv = document.getElementById('post-content');
+
+      /**
+       * Helper function to get a URL parameter value.
+       */
+      function getQueryParam(param) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+      }
+
+      /**
+       * Renders dynamic blocks from Strapi component structure.
+       * @param {Array} blocks - Array of Strapi components (rich-text, quote, media, etc.)
+       */
+      function renderBlocks(blocks) {
+          if (!Array.isArray(blocks)) {
+              postContentDiv.innerHTML += '<p class="text-red-500">Error: No content blocks found.</p>';
+              return;
+          }
+
+          blocks.forEach(block => {
+              let html = '';
+              switch (block.__component) {
+                  case 'shared.rich-text':
+                      // FIX: Use marked.parse to convert Markdown body to HTML
+                      html = `<section class="rich-text">${marked.parse(block.body || '')}</section>`;
+                      break;
+                  case 'shared.quote':
+                      html = `
+                          <div class="strapi-quote">
+                              <p class="strapi-quote-body">${block.body || 'Quote body missing.'}</p>
+                              <p class="strapi-quote-title">— ${block.title || 'Unknown Author'}</p>
+                          </div>
+                      `;
+                      break;
+                  case 'shared.media':
+                      // NOTE: shared.media blocks are not deeply populated with their file data.
+                      // For now, this remains a placeholder until the Strapi query is updated for deep media population.
+                      html = `<div class="py-4 text-center text-gray-500 border-t border-b my-6">Image Component Placeholder (ID: ${block.id}) - Media data not fully fetched.</div>`;
+                      break;
+                  case 'shared.slider':
+                      // Slider content is too complex for a simple script, so it's often skipped or represented
+                      html = `<div class="py-4 text-center text-gray-500 border-t border-b my-6">Image Slider Component Placeholder (ID: ${block.id})</div>`;
+                      break;
+                  default:
+                      // Skip unknown components
+                      break;
+              }
+              if (html) {
+                  // Create a temporary div to convert the HTML string into DOM elements
+                  const tempDiv = document.createElement('div');
+                  tempDiv.innerHTML = html;
+                  // Append all child nodes from the temporary div
+                  while (tempDiv.firstChild) {
+                      postContentDiv.appendChild(tempDiv.firstChild);
+                  }
+              }
+          });
+      }
+
+      /**
+       * Fetches and renders a single blog post based on the URL slug.
+       */
+      async function fetchAndRenderSinglePost() {
+        const slug = getQueryParam('slug');
+
+        if (!slug) {
+          loadingSpinner.classList.add('hidden');
+          errorMessage.classList.remove('hidden');
+          errorText.textContent = 'No post slug provided in the URL.';
+          return;
+        }
+
+        try {
+          // Construct the API URL to filter by the slug, including deep population for blocks
+          const fetchUrl = `${BLOG_API_BASE_URL}?filters[slug][$eq]=${slug}&populate=*`;
+          
+          const response = await fetch(fetchUrl);
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+
+          const result = await response.json();
+          
+          // Strapi returns an array. Get the first element.
+          const postData = result.data?.[0];
+          
+          if (!postData || !postData.title) {
+            // No post found for that slug
+            loadingSpinner.classList.add('hidden');
+            errorMessage.classList.remove('hidden');
+            errorText.textContent = `Blog post with slug "${slug}" not found.`;
+            return;
+          }
+
+          // 1. Set Cover Image
+          const coverImage = document.getElementById('post-cover-image');
+          const coverUrl = postData.cover?.url || postData.cover?.formats?.large?.url;
+          if (coverUrl) {
+            coverImage.src = coverUrl;
+          } else {
+            // Hide the cover image container if no image is available
+            document.getElementById('cover-image-container').classList.add('hidden');
+          }
+
+          // 2. Update metadata
+          document.getElementById('post-title').textContent = postData.title;
+          document.getElementById('post-description').textContent = postData.description;
+          document.getElementById('post-date').textContent = new Date(postData.publishedAt || postData.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+          
+          // 3. Insert the main content by rendering the blocks
+          renderBlocks(postData.blocks);
+          
+          // 4. Update the page title
+          document.getElementById('page-title').textContent = `${postData.title} | Vioneta`;
+
+          // 5. Hide loading, show content
+          loadingSpinner.classList.add('hidden');
+          postContainer.classList.remove('hidden');
+
+        } catch (error) {
+          console.error('Failed to fetch and render post:', error);
+          loadingSpinner.classList.add('hidden');
+          errorMessage.classList.remove('hidden');
+          errorText.textContent = `A network error occurred while loading the post. (${error.message}). Check console for details.`;
+        }
+      }
+
+      // Execute the function when the page loads
+      document.addEventListener('DOMContentLoaded', fetchAndRenderSinglePost);
+    </script>
+  </body>
+</html>
